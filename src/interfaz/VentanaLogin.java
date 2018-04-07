@@ -11,7 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JButton;;
+import javax.swing.SwingUtilities;
+import javax.swing.JButton;
+import javax.swing.UIManager;;
 
 public class VentanaLogin extends JFrame implements ActionListener {
 
@@ -57,6 +59,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		getContentPane().add(TxtUsuario);
 
 		Usuario = new JTextField();
+		Usuario.setBackground(UIManager.getColor("Button.darkShadow"));
 		Usuario.setForeground(Color.BLACK);
 		Usuario.setColumns(10);
 		Usuario.setBounds(233, 55, 105, 20);
@@ -69,6 +72,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		getContentPane().add(lblContrasea);
 
 		Contraseña = new JTextField();
+		Contraseña.setBackground(UIManager.getColor("Button.darkShadow"));
 		Contraseña.setForeground(Color.BLACK);
 		Contraseña.setColumns(10);
 		Contraseña.setBounds(233, 100, 105, 20);
@@ -105,14 +109,17 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		if (e.getSource().equals(btnIngresar)) {
 			System.out.println(Usuario.getText());
 			if (Usuario.getText().equals("Admin") && Contraseña.getText().equals("123")) {
-				System.out.println("Ingreso");
+				setVisible(false);
+				VentanaAdmin window = new VentanaAdmin();
+				window.setVisible(true);
 				lblIncorrecto.setText("Entro");
 			} else {
 				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
 			}
 		}
 		if (e.getSource().equals(btnSalir)) {
-			setVisible(false);
+			System.exit(0);
+			
 		}
 	}
 }
