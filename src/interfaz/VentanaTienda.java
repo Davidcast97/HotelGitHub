@@ -31,7 +31,7 @@ import javax.swing.JTextField;
 public class VentanaTienda implements ActionListener, ListSelectionListener {
 
 	private JFrame frame;
-	private JButton btnActualizar, btnComprar, btnEntregar, btnFiar, btnAVenta;
+	private JButton btnActualizar, btnComprar, btnFiar, btnAVenta;
 	private JLabel precioUnitario, precioTotal, inventario;
 	private JList listProductos;
 	private JSpinner spinnerCantidad;
@@ -129,11 +129,6 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		inventario.setBounds(249, 50, 33, 19);
 		frame.getContentPane().add(inventario);
 
-		btnEntregar = new JButton("Entregar ");
-		btnEntregar.setBounds(179, 462, 103, 23);
-		btnEntregar.addActionListener(this);
-		frame.getContentPane().add(btnEntregar);
-
 		btnFiar = new JButton("Fiar");
 		btnFiar.setBounds(179, 414, 103, 23);
 		btnFiar.addActionListener(this);
@@ -199,12 +194,6 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		}
 
 		if (btnFiar == e.getSource()) {
-		}
-
-		if (e.getSource() == btnEntregar) {
-			if (JOptionPane.showConfirmDialog(null, "¿Esta seguro de entregar?") == 0) {
-				VEntrega v = new VEntrega(this);
-			}
 		}
 	}
 
