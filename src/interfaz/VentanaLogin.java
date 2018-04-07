@@ -5,13 +5,16 @@ import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JButton;;
+import javax.swing.SwingUtilities;
+import javax.swing.JButton;
+import javax.swing.UIManager;;
 
 public class VentanaLogin extends JFrame implements ActionListener {
 
@@ -54,6 +57,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		getContentPane().add(TxtUsuario);
 
 		Usuario = new JTextField();
+		Usuario.setBackground(UIManager.getColor("Button.darkShadow"));
 		Usuario.setForeground(Color.BLACK);
 		Usuario.setColumns(10);
 		Usuario.setBounds(233, 55, 105, 20);
@@ -66,6 +70,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		getContentPane().add(lblContrasea);
 
 		Contraseña = new JTextField();
+		Contraseña.setBackground(UIManager.getColor("Button.darkShadow"));
 		Contraseña.setForeground(Color.BLACK);
 		Contraseña.setColumns(10);
 		Contraseña.setBounds(233, 100, 105, 20);
@@ -92,7 +97,11 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setForeground(Color.WHITE);
 		lblFondo.setIcon(new ImageIcon(
-				"C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\1.2.jpg"));
+				new File (".").getAbsolutePath ()+"\\src\\imagenes\\1.2.jpg"));//	"C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\1.2.jpg"
+		
+
+		System.out.println (new File ("").getAbsolutePath ()+"\\src\\imagenes\\1.2.jpg");
+
 		lblFondo.setBounds(0, 0, 490, 278);
 		contentpane.add(lblFondo);
 	}
@@ -102,14 +111,17 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		if (e.getSource().equals(btnIngresar)) {
 			System.out.println(Usuario.getText());
 			if (Usuario.getText().equals("Admin") && Contraseña.getText().equals("123")) {
-				System.out.println("Ingreso");
+				setVisible(false);
+				VentanaAdmin window = new VentanaAdmin();
+				window.setVisible(true);
 				lblIncorrecto.setText("Entro");
 			} else {
 				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
 			}
 		}
 		if (e.getSource().equals(btnSalir)) {
-			setVisible(false);
+			System.exit(0);
+			
 		}
 	}
 }
