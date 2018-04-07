@@ -31,7 +31,7 @@ import javax.swing.JTextField;
 public class VentanaTienda implements ActionListener, ListSelectionListener {
 
 	private JFrame frame;
-	private JButton btnActualizar, btnComprar, btnEntregar, btnFiar, btnAVenta;
+	private JButton btnActualizar, btnComprar, btnFiar, btnAVenta;
 	private JLabel precioUnitario, precioTotal, inventario;
 	private JList listProductos;
 	private JSpinner spinnerCantidad;
@@ -46,7 +46,8 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+					VentanaTienda window = new VentanaTienda();
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -57,7 +58,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 	
 	public VentanaTienda() throws Exception {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 330, 535);
+		frame.setBounds(100, 100, 320, 535);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -104,7 +105,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		frame.getContentPane().add(btnActualizar);
 
 		btnComprar = new JButton("Comprar");
-		btnComprar.setBounds(179, 383, 103, 23);
+		btnComprar.setBounds(179, 383, 112, 23);
 		btnComprar.addActionListener(this);
 		frame.getContentPane().add(btnComprar);
 
@@ -120,18 +121,13 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		inventario.setBounds(249, 50, 33, 19);
 		frame.getContentPane().add(inventario);
 
-		btnEntregar = new JButton("Entregar ");
-		btnEntregar.setBounds(179, 462, 103, 23);
-		btnEntregar.addActionListener(this);
-		frame.getContentPane().add(btnEntregar);
-
 		btnFiar = new JButton("Fiar");
-		btnFiar.setBounds(179, 414, 103, 23);
+		btnFiar.setBounds(179, 414, 112, 23);
 		btnFiar.addActionListener(this);
 		frame.getContentPane().add(btnFiar);
 
 		JLabel lblDetallesDeLa = new JLabel("Detalles de la venta");
-		lblDetallesDeLa.setBounds(10, 328, 117, 14);
+		lblDetallesDeLa.setBounds(10, 307, 117, 14);
 		frame.getContentPane().add(lblDetallesDeLa);
 
 		btnAVenta = new JButton("A\u00F1adir Venta");
@@ -140,7 +136,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		frame.getContentPane().add(btnAVenta);
 
 		detallesVenta = new JTextPane();
-		detallesVenta.setBounds(20, 353, 149, 118);
+		detallesVenta.setBounds(10, 332, 159, 139);
 		frame.getContentPane().add(detallesVenta);
 
 		JLabel lblHabitacion = new JLabel("Habitacion");
@@ -148,7 +144,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		frame.getContentPane().add(lblHabitacion);
 
 		txtHabitacion = new JTextField();
-		txtHabitacion.setBounds(264, 227, 40, 20);
+		txtHabitacion.setBounds(245, 227, 40, 20);
 		frame.getContentPane().add(txtHabitacion);
 		txtHabitacion.setColumns(10);
 
@@ -189,12 +185,6 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		}
 
 		if (btnFiar == e.getSource()) {
-		}
-
-		if (e.getSource() == btnEntregar) {
-			if (JOptionPane.showConfirmDialog(null, "¿Esta seguro de entregar?") == 0) {
-				VEntrega v = new VEntrega(this);
-			}
 		}
 	}
 
