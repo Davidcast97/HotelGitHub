@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -99,7 +100,11 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setForeground(Color.WHITE);
 		lblFondo.setIcon(new ImageIcon(
-				"C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\1.2.jpg"));
+				new File (".").getAbsolutePath ()+"\\src\\imagenes\\1.2.jpg"));//	"C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\1.2.jpg"
+		
+
+		System.out.println (new File ("").getAbsolutePath ()+"\\src\\imagenes\\1.2.jpg");
+
 		lblFondo.setBounds(0, 0, 490, 278);
 		contentpane.add(lblFondo);
 	}
