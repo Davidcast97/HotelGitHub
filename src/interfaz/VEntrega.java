@@ -11,6 +11,7 @@ public class VEntrega {
 
 	private JFrame frame;
 	private VentanaTienda VProd;
+	
 	private JLabel lblEntrega;
 	private JTextField txtEntrega;
 	private JLabel lblRecibe;

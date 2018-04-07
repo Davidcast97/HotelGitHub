@@ -1,7 +1,6 @@
 package interfaz;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -26,6 +25,7 @@ import logica.VentaParcial;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.JTextField;
 
 public class VentanaTienda implements ActionListener, ListSelectionListener {
@@ -41,20 +41,27 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 
 	/**
 	 * Launch the application.
+	 * 
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+					VentanaTienda window = new VentanaTienda();
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
+ 
 
 	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public VentanaTienda() throws Exception {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 330, 535);
@@ -81,6 +88,8 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		spinnerCantidad.setBounds(245, 127, 46, 20);
 		spinnerCantidad.setValue(1);
 		frame.getContentPane().add(spinnerCantidad);
+		spinnerCantidad.setModel(new SpinnerNumberModel(0, 0, 0, 1));
+
 
 		JLabel lblPrecioUnidad = new JLabel("Precio unidad");
 		lblPrecioUnidad.setBounds(179, 80, 89, 14);
@@ -161,6 +170,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 			int select = listProductos.getSelectedIndex();
 			precioUnitario.setText(miTienda.getMisProductos().get(select).getPrecio() + "");
 			inventario.setText(miTienda.getMisProductos().get(select).getCantidad() + "");
+			spinnerCantidad.setModel(new SpinnerNumberModel(1, 1, miTienda.getMisProductos().get(select).getCantidad(), 1));
 		}
 	}
 	
