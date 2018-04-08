@@ -99,11 +99,9 @@ public class VentanaLogin extends JFrame implements ActionListener {
 
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setForeground(Color.WHITE);
-		lblFondo.setIcon(new ImageIcon(
-				new File (".").getAbsolutePath ()+"\\src\\imagenes\\1.2.jpg"));//	"C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\1.2.jpg"
-		
+		lblFondo.setIcon(new ImageIcon(new File(".").getAbsolutePath() + "\\src\\imagenes\\1.2.jpg"));// "C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\1.2.jpg"
 
-		System.out.println (new File ("").getAbsolutePath ()+"\\src\\imagenes\\1.2.jpg");
+		System.out.println(new File("").getAbsolutePath() + "\\src\\imagenes\\1.2.jpg");
 
 		lblFondo.setBounds(0, 0, 490, 278);
 		contentpane.add(lblFondo);
@@ -124,7 +122,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		}
 		if (e.getSource().equals(btnSalir)) {
 			System.exit(0);
-			
+
 		}
 	}
 }
