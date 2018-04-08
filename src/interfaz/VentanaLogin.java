@@ -18,9 +18,6 @@ import javax.swing.UIManager;;
 
 public class VentanaLogin extends JFrame implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JTextField Usuario;
