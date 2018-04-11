@@ -9497,7 +9497,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+Check In",
+											"text": "-Check In",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -9526,7 +9526,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+Check Out",
+											"text": "-Check Out",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -9845,7 +9845,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+cuidadOrigen",
+											"text": "-ciudadOrigen",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -9874,7 +9874,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+nacionalidad",
+											"text": "-nacionalidad",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -9903,7 +9903,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+correo",
+											"text": "-correo",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -9932,7 +9932,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+ocupacion",
+											"text": "-ocupacion",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -12602,7 +12602,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+telefono",
+											"text": "-telefono",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -12631,7 +12631,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+mayorEdad: boolean",
+											"text": "-mayorEdad: boolean",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -13236,7 +13236,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+valor",
+											"text": "-valor",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -13265,7 +13265,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+temporada?",
+											"text": "-temporada",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -15729,7 +15729,7 @@
 								"$ref": "AAAAAAFim9KQa2ILZMQ="
 							},
 							"name": "Check In",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "",
@@ -15747,7 +15747,7 @@
 								"$ref": "AAAAAAFim9KQa2ILZMQ="
 							},
 							"name": "Check Out",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "",
@@ -15795,8 +15795,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFim9PNQGR3L5s="
 							},
-							"name": "cuidadOrigen",
-							"visibility": "public",
+							"name": "ciudadOrigen",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"isReadOnly": false,
@@ -15813,9 +15813,10 @@
 								"$ref": "AAAAAAFim9PNQGR3L5s="
 							},
 							"name": "nacionalidad",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -15830,9 +15831,10 @@
 								"$ref": "AAAAAAFim9PNQGR3L5s="
 							},
 							"name": "correo",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -15847,9 +15849,10 @@
 								"$ref": "AAAAAAFim9PNQGR3L5s="
 							},
 							"name": "ocupacion",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -16017,6 +16020,7 @@
 							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -16034,6 +16038,7 @@
 							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -16051,6 +16056,7 @@
 							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -16065,9 +16071,10 @@
 								"$ref": "AAAAAAFiohBCYSI56+4="
 							},
 							"name": "telefono",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -16082,7 +16089,7 @@
 								"$ref": "AAAAAAFiohBCYSI56+4="
 							},
 							"name": "mayorEdad",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
 							"type": "boolean",
@@ -16115,9 +16122,10 @@
 								"$ref": "AAAAAAFioiUulTBlboY="
 							},
 							"name": "valor",
-							"visibility": "public",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -16131,10 +16139,11 @@
 							"_parent": {
 								"$ref": "AAAAAAFioiUulTBlboY="
 							},
-							"name": "temporada?",
-							"visibility": "public",
+							"name": "temporada",
+							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
