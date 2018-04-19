@@ -15,7 +15,7 @@ public class Tienda {
 	public Tienda(){
 		
 		
-		misProductos = new ArrayList<>();
+		misProductos = new ArrayList<Producto>();
 		
 		//AGREGAR ALGUNOS PRODUCTOS A LA TIENDA
 		Producto prod1 = new Producto("Agua", 2500, 9);
@@ -26,16 +26,23 @@ public class Tienda {
 		misProductos.add(prod3);
 		
 		
-		misVentasCompletas = new ArrayList<>();
-		misVentasParciales = new ArrayList<>();
+		misVentasCompletas = new ArrayList<VentaCompleta>();
+		misVentasParciales = new ArrayList<VentaParcial>();
 	}
 	
 	public int crearVentaCompleta(Habitacion hab,boolean debe){
 		VentaCompleta vc = new VentaCompleta("Hoy", hab);
+		for(VentaParcial v:misVentasParciales) {
+			for(Producto p: misProductos) {
+				if (v.getMiProducto().equals(p)) {
+					p.setCantidad(p.getCantidad()-v.getCantidad());
+				}
+			}
+		}
 		vc.setMisVentasParciales(misVentasParciales);
 		vc.setDebe(debe);
-		
-		misVentasCompletas = new ArrayList<>();
+		misVentasCompletas.add(vc);
+		misVentasParciales= new ArrayList<VentaParcial>();
 		return vc.getPrecioTotal();
 	}
 

@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSpinner;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -27,17 +29,18 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
-public class VentanaTienda implements ActionListener, ListSelectionListener {
+public class VentanaTienda implements ActionListener, ListSelectionListener, ChangeListener {
 
 	private JFrame frame;
-	private JButton btnActualizar, btnComprar, btnFiar, btnAVenta;
+	private JButton btnComprar, btnFiar, btnAVenta;
 	private JLabel precioUnitario, precioTotal, inventario;
 	private JList listProductos;
 	private JSpinner spinnerCantidad;
 	private JTextPane detallesVenta;
 	private Tienda miTienda;
-	private JTextField txtHabitacion;
 
 	/**
 	 * Launch the application.
@@ -64,56 +67,26 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 	 */
 	public VentanaTienda() throws Exception {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 330, 535);
+		frame.setBounds(100, 100, 383, 493);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 
 		miTienda = new Tienda();
 
 		listProductos = new JList(miTienda.getListaNombresProductos());
-		listProductos.setBounds(10, 45, 159, 251);
+		listProductos.setFont(new Font("Arial", Font.ITALIC, 12));
+		listProductos.setBounds(10, 45, 159, 253);
 		listProductos.addListSelectionListener(this);
 		frame.getContentPane().add(listProductos);
 
 		JLabel lblProductos = new JLabel("Productos");
-		lblProductos.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblProductos.setBounds(10, 11, 89, 23);
+		lblProductos.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
+		lblProductos.setBounds(10, 11, 149, 23);
 		frame.getContentPane().add(lblProductos);
 
-		JLabel lblCantidad = new JLabel("Cantidad:");
-		lblCantidad.setBounds(179, 130, 56, 14);
-		frame.getContentPane().add(lblCantidad);
-
-		spinnerCantidad = new JSpinner();
-		spinnerCantidad.setBounds(245, 127, 46, 20);
-		spinnerCantidad.setValue(1);
-		frame.getContentPane().add(spinnerCantidad);
-		spinnerCantidad.setModel(new SpinnerNumberModel(0, 0, 0, 1));
-
-
-		JLabel lblPrecioUnidad = new JLabel("Precio unidad");
-		lblPrecioUnidad.setBounds(179, 80, 89, 14);
-		frame.getContentPane().add(lblPrecioUnidad);
-
-		precioUnitario = new JLabel("");
-		precioUnitario.setBounds(179, 105, 89, 14);
-		frame.getContentPane().add(precioUnitario);
-
-		JLabel lblPrecioTotal = new JLabel("Precio total");
-		lblPrecioTotal.setBounds(179, 169, 76, 14);
-		frame.getContentPane().add(lblPrecioTotal);
-
-		precioTotal = new JLabel("");
-		precioTotal.setBounds(179, 194, 89, 14);
-		frame.getContentPane().add(precioTotal);
-
-		btnActualizar = new JButton("Actualizar");
-		btnActualizar.setBounds(179, 296, 112, 23);
-		btnActualizar.addActionListener(this);
-		frame.getContentPane().add(btnActualizar);
-
 		btnComprar = new JButton("Comprar");
-		btnComprar.setBounds(179, 383, 103, 23);
+		btnComprar.setBounds(229, 344, 103, 23);
 		btnComprar.addActionListener(this);
 		frame.getContentPane().add(btnComprar);
 
@@ -121,67 +94,127 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		estado.setBounds(10, 471, 149, 14);
 		frame.getContentPane().add(estado);
 
-		JLabel lblInventario = new JLabel("Inventario:");
-		lblInventario.setBounds(179, 46, 76, 23);
-		frame.getContentPane().add(lblInventario);
-
-		inventario = new JLabel("");
-		inventario.setBounds(249, 50, 33, 19);
-		frame.getContentPane().add(inventario);
-
 		btnFiar = new JButton("Fiar");
-		btnFiar.setBounds(179, 414, 103, 23);
+		btnFiar.setBounds(229, 389, 103, 23);
 		btnFiar.addActionListener(this);
 		frame.getContentPane().add(btnFiar);
 
 		JLabel lblDetallesDeLa = new JLabel("Detalles de la venta");
-		lblDetallesDeLa.setBounds(10, 328, 117, 14);
+		lblDetallesDeLa.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 14));
+		lblDetallesDeLa.setBounds(10, 309, 159, 14);
 		frame.getContentPane().add(lblDetallesDeLa);
 
-		btnAVenta = new JButton("A\u00F1adir Venta");
-		btnAVenta.setBounds(179, 330, 112, 23);
-		btnAVenta.addActionListener(this);
-		frame.getContentPane().add(btnAVenta);
-
 		detallesVenta = new JTextPane();
-		detallesVenta.setBounds(20, 353, 149, 118);
+		detallesVenta.setBounds(10, 334, 159, 118);
 		frame.getContentPane().add(detallesVenta);
-
-		JLabel lblHabitacion = new JLabel("Habitacion");
-		lblHabitacion.setBounds(179, 230, 76, 14);
-		frame.getContentPane().add(lblHabitacion);
-
-		txtHabitacion = new JTextField();
-		txtHabitacion.setBounds(264, 227, 40, 20);
-		frame.getContentPane().add(txtHabitacion);
-		txtHabitacion.setColumns(10);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(179, 45, 189, 257);
+		frame.getContentPane().add(panel);
+						panel.setLayout(null);
+				
+				
+						JLabel lblPrecioUnidad = new JLabel("Precio unidad");
+						lblPrecioUnidad.setBounds(10, 52, 76, 15);
+						panel.add(lblPrecioUnidad);
+						lblPrecioUnidad.setFont(new Font("Arial", Font.PLAIN, 12));
+		
+				JLabel lblInventario = new JLabel("Inventario:");
+				lblInventario.setBounds(10, 11, 56, 15);
+				panel.add(lblInventario);
+				lblInventario.setFont(new Font("Arial", Font.PLAIN, 12));
+				
+						inventario = new JLabel("");
+						inventario.setHorizontalAlignment(SwingConstants.RIGHT);
+						inventario.setBounds(144, 11, 35, 19);
+						panel.add(inventario);
+						
+								precioUnitario = new JLabel("");
+								precioUnitario.setHorizontalAlignment(SwingConstants.RIGHT);
+								precioUnitario.setBounds(90, 52, 89, 14);
+								panel.add(precioUnitario);
+								
+										precioTotal = new JLabel("");
+										precioTotal.setHorizontalAlignment(SwingConstants.RIGHT);
+										precioTotal.setBounds(90, 125, 89, 14);
+										panel.add(precioTotal);
+										
+										JComboBox comboBox = new JComboBox();
+										comboBox.setBounds(127, 162, 52, 20);
+										panel.add(comboBox);
+										comboBox.addItem("100");
+										comboBox.addItem("101");
+										comboBox.addItem("202");
+										
+												spinnerCantidad = new JSpinner();
+												spinnerCantidad.setBounds(133, 87, 46, 20);
+												panel.add(spinnerCantidad);
+												spinnerCantidad.setValue(1);
+												spinnerCantidad.addChangeListener(this);
+												spinnerCantidad.setModel(new SpinnerNumberModel(0, 0, 0, 1));
+												
+														btnAVenta = new JButton("A\u00F1adir Venta");
+														btnAVenta.setBounds(41, 223, 112, 23);
+														panel.add(btnAVenta);
+														
+																JLabel lblCantidad = new JLabel("Cantidad:");
+																lblCantidad.setBounds(10, 89, 76, 14);
+																panel.add(lblCantidad);
+																lblCantidad.setFont(new Font("Arial", Font.PLAIN, 12));
+																
+																		JLabel lblPrecioTotal = new JLabel("Precio total");
+																		lblPrecioTotal.setBounds(10, 125, 76, 14);
+																		panel.add(lblPrecioTotal);
+																		lblPrecioTotal.setFont(new Font("Arial", Font.PLAIN, 12));
+																		
+																				JLabel lblHabitacion = new JLabel("Habitacion");
+																				lblHabitacion.setBounds(10, 164, 76, 14);
+																				panel.add(lblHabitacion);
+																				lblHabitacion.setFont(new Font("Arial", Font.PLAIN, 12));
+														btnAVenta.addActionListener(this);
 
 	}
 	
-	@Override
+	
 	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
-		if (!e.getValueIsAdjusting()) {
+			if (!e.getValueIsAdjusting()) {
 			int select = listProductos.getSelectedIndex();
 			precioUnitario.setText(miTienda.getMisProductos().get(select).getPrecio() + "");
-			inventario.setText(miTienda.getMisProductos().get(select).getCantidad() + "");
-			spinnerCantidad.setModel(new SpinnerNumberModel(1, 1, miTienda.getMisProductos().get(select).getCantidad(), 1));
+			int cantidad = miTienda.getMisProductos().get(select).getCantidad();
+			inventario.setText( cantidad + "");
+			if (cantidad>0) {
+				spinnerCantidad.setModel(new SpinnerNumberModel(1, 1, miTienda.getMisProductos().get(select).getCantidad(), 1));
+				precioTotal.setText(miTienda.getMisProductos().get(select).getPrecio()+ "");
+			}else {
+				spinnerCantidad.setModel(new SpinnerNumberModel(0, 0, miTienda.getMisProductos().get(select).getCantidad(), 1));	
+			}
+			
+			
 		}
+		
 	}
 	
-	@Override
+	public void stateChanged(ChangeEvent e) {
+		int total = Integer.parseInt(precioUnitario.getText())
+				* Integer.parseInt(spinnerCantidad.getValue().toString());
+		precioTotal.setText(total + "");
+	}
+	
+	
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource() == btnActualizar) {
-			int total = Integer.parseInt(precioUnitario.getText())
-					* Integer.parseInt(spinnerCantidad.getValue().toString());
-			precioTotal.setText(total + "");
-		}
+		
 
 		if (e.getSource() == btnAVenta) {
 			int precioT = Integer.parseInt(precioTotal.getText());
-			detallesVenta
-					.setText(detallesVenta.getText() + " \r\n " + listProductos.getSelectedValue() + " \t  " + precioT);
+			if (detallesVenta.getText().equals("")) {
+				detallesVenta
+				.setText( listProductos.getSelectedValue() + " \t  " + precioT);
+			
+			}else {
+				detallesVenta
+				.setText(detallesVenta.getText() + " \r\n " + listProductos.getSelectedValue() + " \t  " + precioT);
+		
+			}
 			
 			miTienda.guardarVentaParcial(Integer.parseInt(spinnerCantidad.getValue() + ""), precioT,
 					miTienda.getMisProductos().get(listProductos.getSelectedIndex()));
@@ -190,12 +223,13 @@ public class VentanaTienda implements ActionListener, ListSelectionListener {
 		if (e.getSource() == btnComprar) {
 			Habitacion pruebita = new Habitacion();
 			int totalVentaCompleta = miTienda.crearVentaCompleta(pruebita,false);
+			detallesVenta.setText("");
+			int cantidad = miTienda.getMisProductos().get(listProductos.getSelectedIndex()).getCantidad();
+			inventario.setText( cantidad + "");
 			JOptionPane.showMessageDialog(null, "La venta fue concretada: "+totalVentaCompleta);
 		}
 
 		if (btnFiar == e.getSource()) {
 		}
 	}
-
-	
 }

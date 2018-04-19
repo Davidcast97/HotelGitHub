@@ -13,6 +13,21 @@ public class Producto {
 	}
 
 
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
 	public String getNombre() {
 		return nombre;
 	}

@@ -104,7 +104,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		contentpane.add(lblFondo);
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnIngresar)) {
 			System.out.println(Usuario.getText());
