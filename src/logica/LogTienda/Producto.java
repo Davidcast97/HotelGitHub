@@ -1,15 +1,19 @@
-package logica;
+package logica.LogTienda;
 
 public class Producto {
 	private String nombre;
 	private int precio;
 	private int cantidad;
+	private int categoria;
 	
-	public Producto(String nombre, int precio, int cantidad) {
+	public Producto(String nombre, int precio, int cantidad, int categoria) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
+		
+		// 1. Bebidas 2. Solidos 3. Licores 4. Aseo
+		this.categoria = categoria;
 	}
 
 

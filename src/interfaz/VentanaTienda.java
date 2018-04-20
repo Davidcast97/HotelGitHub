@@ -21,9 +21,9 @@ import java.util.Iterator;
 import java.awt.event.ActionEvent;
 
 import logica.Habitacion;
-import logica.Producto;
-import logica.Tienda;
-import logica.VentaParcial;
+
+import logica.LogTienda.Tienda;
+
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
@@ -37,6 +37,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 	private JFrame frame;
 	private JButton btnComprar, btnFiar, btnAVenta;
 	private JLabel precioUnitario, precioTotal, inventario;
+	private JComboBox<String> comboBoxHabitaciones;
 	private JList listProductos;
 	private JSpinner spinnerCantidad;
 	private JTextPane detallesVenta;
@@ -76,7 +77,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 
 		listProductos = new JList(miTienda.getListaNombresProductos());
 		listProductos.setFont(new Font("Arial", Font.ITALIC, 12));
-		listProductos.setBounds(10, 45, 159, 253);
+		listProductos.setBounds(10, 45, 159, 257);
 		listProductos.addListSelectionListener(this);
 		frame.getContentPane().add(listProductos);
 
@@ -86,7 +87,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		frame.getContentPane().add(lblProductos);
 
 		btnComprar = new JButton("Comprar");
-		btnComprar.setBounds(229, 344, 103, 23);
+		btnComprar.setBounds(265, 365, 103, 23);
 		btnComprar.addActionListener(this);
 		frame.getContentPane().add(btnComprar);
 
@@ -95,7 +96,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		frame.getContentPane().add(estado);
 
 		btnFiar = new JButton("Fiar");
-		btnFiar.setBounds(229, 389, 103, 23);
+		btnFiar.setBounds(265, 399, 103, 23);
 		btnFiar.addActionListener(this);
 		frame.getContentPane().add(btnFiar);
 
@@ -105,7 +106,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		frame.getContentPane().add(lblDetallesDeLa);
 
 		detallesVenta = new JTextPane();
-		detallesVenta.setBounds(10, 334, 159, 118);
+		detallesVenta.setBounds(10, 334, 245, 118);
 		frame.getContentPane().add(detallesVenta);
 		
 		JPanel panel = new JPanel();
@@ -139,12 +140,13 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 										precioTotal.setBounds(90, 125, 89, 14);
 										panel.add(precioTotal);
 										
-										JComboBox comboBox = new JComboBox();
-										comboBox.setBounds(127, 162, 52, 20);
-										panel.add(comboBox);
-										comboBox.addItem("100");
-										comboBox.addItem("101");
-										comboBox.addItem("202");
+										
+										comboBoxHabitaciones = new JComboBox();
+										comboBoxHabitaciones.setBounds(127, 162, 52, 20);
+										panel.add(comboBoxHabitaciones);
+										comboBoxHabitaciones.addItem("100");
+										comboBoxHabitaciones.addItem("101");
+										comboBoxHabitaciones.addItem("202");
 										
 												spinnerCantidad = new JSpinner();
 												spinnerCantidad.setBounds(133, 87, 46, 20);
@@ -221,8 +223,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		}
 
 		if (e.getSource() == btnComprar) {
-			Habitacion pruebita = new Habitacion();
-			int totalVentaCompleta = miTienda.crearVentaCompleta(pruebita,false);
+			int totalVentaCompleta = miTienda.crearVentaCompleta();
 			detallesVenta.setText("");
 			int cantidad = miTienda.getMisProductos().get(listProductos.getSelectedIndex()).getCantidad();
 			inventario.setText( cantidad + "");
@@ -230,6 +231,11 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		}
 
 		if (btnFiar == e.getSource()) {
+			int totalVentaCompleta = miTienda.crearVentaCompleta((String)comboBoxHabitaciones.getSelectedItem());
+			detallesVenta.setText("");
+			int cantidad = miTienda.getMisProductos().get(listProductos.getSelectedIndex()).getCantidad();
+			inventario.setText( cantidad + "");
+			JOptionPane.showMessageDialog(null, "La venta fue concretada: "+totalVentaCompleta);
 		}
 	}
 }
