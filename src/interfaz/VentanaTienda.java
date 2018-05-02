@@ -106,6 +106,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		frame.getContentPane().add(lblDetallesDeLa);
 
 		detallesVenta = new JTextPane();
+		detallesVenta.setEditable(false);
 		detallesVenta.setBounds(10, 334, 245, 118);
 		frame.getContentPane().add(detallesVenta);
 		

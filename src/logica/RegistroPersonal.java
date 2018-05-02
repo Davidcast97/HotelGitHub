@@ -1,11 +1,13 @@
 package logica;
 import java.util.GregorianCalendar;
 public class RegistroPersonal {
+	private int id;
 	private GregorianCalendar checkIn;
 	private GregorianCalendar checkOut;
 	private String miIdPersonaTitular;
 	private Habitacion miHabitacion;
-	public RegistroPersonal(GregorianCalendar checkIn,GregorianCalendar checkOut, String miIdPersonaTitular, Habitacion miHabitacion) {
+	public RegistroPersonal(int id, GregorianCalendar checkIn,GregorianCalendar checkOut, String miIdPersonaTitular, Habitacion miHabitacion) {
+		this.id = id;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.miIdPersonaTitular = miIdPersonaTitular;
@@ -26,7 +28,7 @@ public class RegistroPersonal {
 	public String getMiIdPersonaTitular() {
 		return miIdPersonaTitular;
 	}
-	public void setMiIdPersona(String miIdPersonaTitular) {
+	public void setMiIdPersonaTitular(String miIdPersonaTitular) {
 		this.miIdPersonaTitular = miIdPersonaTitular;
 	}
 	public Habitacion getMiHabitacion() {
@@ -34,5 +36,11 @@ public class RegistroPersonal {
 	}
 	public void setMiHabitacion(Habitacion miHabitacion) {
 		this.miHabitacion = miHabitacion;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }
