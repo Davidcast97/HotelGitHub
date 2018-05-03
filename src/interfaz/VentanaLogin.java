@@ -9,12 +9,15 @@ import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JButton;
-import javax.swing.UIManager;;
+import javax.swing.UIManager;
+
+import logica.Hotel;;
 
 public class VentanaLogin extends JFrame implements ActionListener {
 
@@ -25,7 +28,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 	private JButton btnIngresar;
 	private JLabel lblIncorrecto;
 	private JButton btnSalir;
-
+	private Hotel hotel;
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
@@ -50,6 +53,8 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		Container contentpane = getContentPane();
 		getContentPane().setLayout(null);
 
+		hotel = new Hotel();
+		
 		JLabel TxtUsuario = new JLabel("Usuario :");
 		TxtUsuario.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
 		TxtUsuario.setForeground(Color.WHITE);
@@ -107,13 +112,15 @@ public class VentanaLogin extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnIngresar)) {
-			System.out.println(Usuario.getText());
 			if (Usuario.getText().equals("Admin") && Contraseña.getText().equals("123")) {
-				setVisible(false);
-				VentanaAdmin window = new VentanaAdmin();
+			//	setVisible(false);
+				VentanaCrear window = new VentanaCrear(hotel);
 				window.setVisible(true);
 				lblIncorrecto.setText("Entro");
-			} else {
+			}if(hotel.comprobarAdministrador(Usuario.getText(), Contraseña.getText()))   {
+				JOptionPane.showMessageDialog(null, "Ingreos");
+			}
+			else {
 				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
 			}
 		}

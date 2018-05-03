@@ -17,9 +17,12 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.event.ActionEvent;
 
+import logica.Administrador;
+import logica.Empleado;
 import logica.Habitacion;
 import logica.LogTienda.Producto;
 import logica.LogTienda.Tienda;
@@ -48,6 +51,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 	 */
 
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -175,9 +179,9 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 
 	public void valueChanged(ListSelectionEvent e) {
 		if (!e.getValueIsAdjusting()) {
-			
+
 			int select = listProductos.getSelectedIndex();
-			Producto p = miTienda.buscarProducto((String)listProductos.getSelectedValue());
+			Producto p = miTienda.buscarProducto((String) listProductos.getSelectedValue());
 			precioUnitario.setText(p.getPrecio() + "");
 			int cantidad = p.getCantidad();
 			inventario.setText(cantidad + "");
