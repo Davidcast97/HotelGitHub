@@ -1,5 +1,10 @@
 package logica;
 
-public class Hotel {
+import java.util.ArrayList;
 
+public class Hotel {
+	
+	private ArrayList<Administrador> misAdministradores;
+
+	
 }
