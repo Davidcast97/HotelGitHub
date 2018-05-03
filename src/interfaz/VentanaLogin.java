@@ -123,7 +123,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 			if(hotel.comprobarAdministrador(Usuario.getText(), Contrasena.getText()))   {
 				
 				VentanaAdministrador window= new VentanaAdministrador(Usuario.getText(), Contrasena.getText());
-				
+				window.setVisible(true);
 			}
 			
 			//if(Administrador= ad.comprobarRecepcionista(Usuario.getText(), Contrasena.getText())) {
