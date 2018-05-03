@@ -126,7 +126,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 				
 			}
 			
-			//if(Administrador= ad.comprobarRecepcionista(Usuario.getText(), Contraseña.getText())) {
+			//if(Administrador= ad.comprobarRecepcionista(Usuario.getText(), Contrasena.getText())) {
 				
 			//}
 			else {

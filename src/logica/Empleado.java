@@ -5,14 +5,14 @@ public class Empleado {
 	private String nombre;
 	private String cedula;
 	private String telefono;
-	private String contraseña;
+	private String contrasena;
 	private String login;
 
-	public Empleado(String nombre, String cedula, String telefono, String contraseña, String login) {
+	public Empleado(String nombre, String cedula, String telefono, String contrasena, String login) {
 		this.nombre = nombre;
 		this.cedula = cedula;
 		this.telefono = telefono;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 		this.login = login;
 	}
 
@@ -40,12 +40,12 @@ public class Empleado {
 		this.telefono = telefono;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public String getLogin() {

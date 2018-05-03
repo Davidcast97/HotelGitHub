@@ -2,7 +2,6 @@ package logica;
 
 import java.util.ArrayList;
 
-import com.jgoodies.common.base.SystemUtils;
 
 public class Hotel {
 	private ArrayList<Administrador> misAdministradores;
@@ -14,15 +13,15 @@ public class Hotel {
 			
 		}
 	
-		public void crearAdminitradores(String nombre, String cedula, String telefono, String contraseña, String login) {
+		public void crearAdminitradores(String nombre, String cedula, String telefono, String contrasena, String login) {
 		
-		misAdministradores.add(new Administrador(nombre, cedula, telefono, contraseña, login));
+		misAdministradores.add(new Administrador(nombre, cedula, telefono, contrasena, login));
 		System.out.println(misAdministradores.size());
 		System.out.println("Adminitrador Creado");
 	}
-		public boolean comprobarAdministrador(String login, String contraseña) {
+		public boolean comprobarAdministrador(String login, String contrasena) {
 			for (int i = 0; i < misAdministradores.size(); i++) {
-				if(misAdministradores.get(i).getLogin().equals(login) && misAdministradores.get(i).getContraseña().equals(contraseña)) {
+				if(misAdministradores.get(i).getLogin().equals(login) && misAdministradores.get(i).getContrasena().equals(contrasena)) {
 					return true;
 				}
 			}

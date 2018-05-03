@@ -21,7 +21,7 @@ public class VentanaCrear extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField txtCedula, txtNombre, txtTelefono;
-	private JLabel lblContraseña;
+	private JLabel lblContrasena;
 	private JTextField txtContrasena;
 	private JTextField txtLogin;
 	private JButton btnGuargar ;
@@ -61,11 +61,11 @@ public class VentanaCrear extends JFrame implements ActionListener {
 		lblTelefono.setBounds(50, 106, 95, 26);
 		contentPane.add(lblTelefono);
 		
-		lblContraseña = new JLabel("Contrase\u00F1a :");
-		lblContraseña.setForeground(Color.BLACK);
-		lblContraseña.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
-		lblContraseña.setBounds(50, 129, 95, 26);
-		contentPane.add(lblContraseña);
+		lblContrasena = new JLabel("Contrase\u00F1a :");
+		lblContrasena.setForeground(Color.BLACK);
+		lblContrasena.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
+		lblContrasena.setBounds(50, 129, 95, 26);
+		contentPane.add(lblContrasena);
 		
 		JLabel lblLogin = new JLabel("Login :");
 		lblLogin.setForeground(Color.BLACK);
