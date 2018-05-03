@@ -45,5 +45,11 @@ public class Producto {
 	public int getCantidad() {
 		return cantidad;
 	}
+
+
+	public int getCategoria() {
+
+		return categoria;
+	}
 	
 }

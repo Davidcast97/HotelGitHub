@@ -1,6 +1,7 @@
 package logica.LogTienda;
 
 import java.awt.Checkbox;
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.ListModel;
@@ -14,10 +15,11 @@ public class Tienda {
 	private ArrayList<Producto> misProductos;
 	private ArrayList<VentaCompleta> misVentasCompletas;
 	private ArrayList<VentaParcial> misVentasParciales;  
+	private String[] categorias;
 	
 	public Tienda(){
-		
-		
+		String c[] = {"BEBIDAS" ,"SOLIDOS","LICORES","ASEO"};
+		categorias = c;
 		misProductos = new ArrayList<Producto>();
 		
 		//AGREGAR ALGUNOS PRODUCTOS A LA TIENDA
@@ -78,7 +80,26 @@ public class Tienda {
 
 
 	public ArrayList<Producto> getMisProductos() {
+		
 		return misProductos;
+	}
+	public Object[] getListaNombresProductosOrdenadosPorCategoria() {
+		
+		ArrayList<String> prodOrdenados = new ArrayList<String>();
+		
+		Font negrita = new Font("Arial", Font.BOLD, 14);
+		
+		for (int i = 0; i < categorias.length; i++) {
+			prodOrdenados.add(categorias[i]+"\n\r");
+			for (Producto c: misProductos) {
+				
+				if (i+1==c.getCategoria()) {
+					prodOrdenados.add(c.getNombre());
+				}				
+			}
+		}
+		Object[] listaNombres = prodOrdenados.toArray();
+		return listaNombres;
 	}
 
 	public Object[] getListaNombresProductos() {
@@ -92,6 +113,15 @@ public class Tienda {
 	public void guardarVentaParcial(int cantidad, int precioT, Producto producto) {
 		VentaParcial vp = new VentaParcial(cantidad,precioT,producto);
 		misVentasParciales.add(vp);
+	}
+
+	public Producto buscarProducto(String selectedValue) {
+		for(Producto p:misProductos) {
+			if (p.getNombre().equals(selectedValue)) {
+				return p;
+			}
+		}
+		return null;
 	}
 	
 	
