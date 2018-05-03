@@ -1,0 +1,9 @@
+Agua Grande,2500,9,1
+Agua pequena,2000,9,1
+Vive 100,3000,13,1
+Papitas,2000,19,2
+Gaseosa,2000,4,1
+Chocolatina pequena,800,4,2
+Chocolatina mediana,2000,5,2
+Chocolatina grande,3000,4,2
+Mani,2000,5,2

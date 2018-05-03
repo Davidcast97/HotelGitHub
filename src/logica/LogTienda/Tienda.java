@@ -16,19 +16,23 @@ public class Tienda {
 	private ArrayList<VentaCompleta> misVentasCompletas;
 	private ArrayList<VentaParcial> misVentasParciales;  
 	private String[] categorias;
+	private archivoTienda archT;
 	
 	public Tienda(){
 		String c[] = {"BEBIDAS" ,"SOLIDOS","LICORES","ASEO"};
 		categorias = c;
 		misProductos = new ArrayList<Producto>();
 		
-		//AGREGAR ALGUNOS PRODUCTOS A LA TIENDA
+		archT = new archivoTienda();
+		misProductos = archT.getMisProd();
+		
+		/*//AGREGAR ALGUNOS PRODUCTOS A LA TIENDA
 		Producto prod1 = new Producto("Agua Grande", 2500, 9,1);
-		Producto prod10 = new Producto("Agua pequeña", 2000, 9,1);
+		Producto prod10 = new Producto("Agua pequeï¿½a", 2000, 9,1);
 		Producto prod2 = new Producto("Vive 100", 3000, 14,1);
 		Producto prod3 = new Producto("Papitas", 2000, 19,2);
 		Producto prod4 = new Producto("Gaseosa", 2000, 5,1);
-		Producto prod5 = new Producto("Chocolatina pequeña",800 , 5,2);
+		Producto prod5 = new Producto("Chocolatina pequeï¿½a",800 , 5,2);
 		Producto prod6 = new Producto("Chocolatina mediana", 2000 , 5,2);
 		Producto prod7= new Producto("Chocolatina grande", 3000, 5,2);
 		Producto prod8 = new Producto("Mani", 2000, 5,2);
@@ -40,9 +44,9 @@ public class Tienda {
 		misProductos.add(prod5);
 		misProductos.add(prod6);
 		misProductos.add(prod7);
-		misProductos.add(prod8);
+		misProductos.add(prod8);*/
 		
-		
+	
 		
 		misVentasCompletas = new ArrayList<VentaCompleta>();
 		misVentasParciales = new ArrayList<VentaParcial>();
@@ -58,6 +62,7 @@ public class Tienda {
 				}
 			}
 		}
+		archT.setMisProd(misProductos);
 		misVentasCompletas.add(vc);
 		misVentasParciales= new ArrayList<VentaParcial>();
 		return vc.getPrecioTotal();
@@ -72,7 +77,7 @@ public class Tienda {
 				}
 			}
 		}
-	
+		archT.setMisProd(misProductos);
 		misVentasCompletas.add(vc);
 		misVentasParciales= new ArrayList<VentaParcial>();
 		return vc.getPrecioTotal();
@@ -113,6 +118,10 @@ public class Tienda {
 	public void guardarVentaParcial(int cantidad, int precioT, Producto producto) {
 		VentaParcial vp = new VentaParcial(cantidad,precioT,producto);
 		misVentasParciales.add(vp);
+	}
+	
+	public void reiniciarVentasParciales() {
+		misVentasParciales.clear();
 	}
 
 	public Producto buscarProducto(String selectedValue) {
