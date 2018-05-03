@@ -7,8 +7,11 @@ import com.jgoodies.common.base.SystemUtils;
 public class Hotel {
 	private ArrayList<Administrador> misAdministradores;
 	
+
+	
 		public Hotel() {
 			misAdministradores= new ArrayList<Administrador>();
+			
 		}
 	
 		public void crearAdminitradores(String nombre, String cedula, String telefono, String contraseña, String login) {
@@ -27,5 +30,6 @@ public class Hotel {
 			return false;
 			
 		}
+
 	
 }

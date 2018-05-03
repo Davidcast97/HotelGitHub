@@ -17,6 +17,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
+import logica.Administrador;
 import logica.Hotel;;
 
 public class VentanaLogin extends JFrame implements ActionListener {
@@ -24,7 +25,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	private JTextField Usuario;
-	private JTextField Contraseña;
+	private JTextField Contrasena;
 	private JButton btnIngresar;
 	private JLabel lblIncorrecto;
 	private JButton btnSalir;
@@ -74,12 +75,12 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		lblContrasea.setBounds(107, 80, 118, 56);
 		getContentPane().add(lblContrasea);
 
-		Contraseña = new JTextField();
-		Contraseña.setBackground(UIManager.getColor("Button.darkShadow"));
-		Contraseña.setForeground(Color.BLACK);
-		Contraseña.setColumns(10);
-		Contraseña.setBounds(233, 100, 105, 20);
-		getContentPane().add(Contraseña);
+		Contrasena = new JTextField();
+		Contrasena.setBackground(UIManager.getColor("Button.darkShadow"));
+		Contrasena.setForeground(Color.BLACK);
+		Contrasena.setColumns(10);
+		Contrasena.setBounds(233, 100, 105, 20);
+		getContentPane().add(Contrasena);
 
 		btnIngresar = new JButton("Ingresar");
 		btnIngresar.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
@@ -112,14 +113,22 @@ public class VentanaLogin extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnIngresar)) {
-			if (Usuario.getText().equals("Admin") && Contraseña.getText().equals("123")) {
+			if (Usuario.getText().equals("Admin") && Contrasena.getText().equals("123")) {
 			//	setVisible(false);
 				VentanaCrear window = new VentanaCrear(hotel);
 				window.setVisible(true);
 				lblIncorrecto.setText("Entro");
-			}if(hotel.comprobarAdministrador(Usuario.getText(), Contraseña.getText()))   {
-				JOptionPane.showMessageDialog(null, "Ingreos");
 			}
+			
+			if(hotel.comprobarAdministrador(Usuario.getText(), Contrasena.getText()))   {
+				
+				VentanaAdministrador window= new VentanaAdministrador(Usuario.getText(), Contrasena.getText());
+				
+			}
+			
+			//if(Administrador= ad.comprobarRecepcionista(Usuario.getText(), Contraseña.getText())) {
+				
+			//}
 			else {
 				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
 			}

@@ -22,7 +22,7 @@ public class VentanaCrear extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JTextField txtCedula, txtNombre, txtTelefono;
 	private JLabel lblContraseña;
-	private JTextField txtContraseña;
+	private JTextField txtContrasena;
 	private JTextField txtLogin;
 	private JButton btnGuargar ;
 	private Hotel hotel2;
@@ -91,11 +91,11 @@ public class VentanaCrear extends JFrame implements ActionListener {
 		txtTelefono.setBounds(155, 110, 86, 20);
 		contentPane.add(txtTelefono);
 		
-		txtContraseña = new JTextField();
-		txtContraseña.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
-		txtContraseña.setColumns(10);
-		txtContraseña.setBounds(155, 133, 86, 20);
-		contentPane.add(txtContraseña);
+		txtContrasena = new JTextField();
+		txtContrasena.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
+		txtContrasena.setColumns(10);
+		txtContrasena.setBounds(155, 133, 86, 20);
+		contentPane.add(txtContrasena);
 		
 		txtLogin = new JTextField();
 		txtLogin.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
@@ -123,7 +123,7 @@ public class VentanaCrear extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnGuargar)) {
-		hotel2.crearAdminitradores(txtNombre.getText(), txtCedula.getText(), txtTelefono.getText(),txtContraseña.getText(),txtLogin.getText());	
+		hotel2.crearAdminitradores(txtNombre.getText(), txtCedula.getText(), txtTelefono.getText(),txtContrasena.getText(),txtLogin.getText());	
 		
 		}if(e.getSource().equals(btnSalir)) {
 			

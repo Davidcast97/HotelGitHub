@@ -195,14 +195,16 @@ public class VentanaRegistroPersonal extends JFrame implements ActionListener{
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnCancelar) {
-			
+			this.setVisible(false);
 		}
 		if(e.getSource() == btnAgregar) {
 			VentanaAgregarAcompanantes ventana = new VentanaAgregarAcompanantes(this);
 			ventana.setVisible(true);
 		}
-		if(e.getSource() == btnCancelar) {
-			
+		if(e.getSource() == btnGuardar) {
+			//verificar;
+			VentanaHabitaciones ventana = new VentanaHabitaciones();//NUMERO DE HABITACIONES;
+			ventana.setVisible(true);
 		}
 	}
 }
