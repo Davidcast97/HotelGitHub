@@ -15,13 +15,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaAgregarAcompanantes extends JFrame {
+public class VentanaAgregarAcompanantes extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtIdentificacion;
 	private JTextField txtTelefono;
-	
+	private JButton btnCancelar;
+	private JButton btnAgregar;
 	private VentanaRegistroPersonal ventana;
 
 	public VentanaAgregarAcompanantes(VentanaRegistroPersonal ventana) {
@@ -31,12 +32,6 @@ public class VentanaAgregarAcompanantes extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		txtNombre = new JTextField();
-		txtNombre.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtNombre.setColumns(10);
-		txtNombre.setBounds(233, 63, 103, 20);
-		contentPane.add(txtNombre);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Verdana", Font.PLAIN, 11));
@@ -48,31 +43,15 @@ public class VentanaAgregarAcompanantes extends JFrame {
 		lblIdentificacion.setBounds(89, 84, 97, 20);
 		contentPane.add(lblIdentificacion);
 		
-		txtIdentificacion = new JTextField();
-		txtIdentificacion.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtIdentificacion.setColumns(10);
-		txtIdentificacion.setBounds(233, 84, 103, 20);
-		contentPane.add(txtIdentificacion);
-		
 		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
 		lblFechaDeNacimiento.setFont(new Font("Verdana", Font.PLAIN, 11));
 		lblFechaDeNacimiento.setBounds(89, 126, 139, 20);
 		contentPane.add(lblFechaDeNacimiento);
 		
-		JDateChooser dateNacimiento = new JDateChooser();
-		dateNacimiento.setBounds(233, 126, 103, 20);
-		contentPane.add(dateNacimiento);
-		
 		JLabel lblTelefono = new JLabel("Telefono:");
 		lblTelefono.setFont(new Font("Verdana", Font.PLAIN, 11));
 		lblTelefono.setBounds(89, 105, 66, 20);
 		contentPane.add(lblTelefono);
-		
-		txtTelefono = new JTextField();
-		txtTelefono.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtTelefono.setColumns(10);
-		txtTelefono.setBounds(233, 105, 103, 20);
-		contentPane.add(txtTelefono);
 		
 		JLabel lblAgregar = new JLabel("Agregar acompa\u00F1antes");
 		lblAgregar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -80,18 +59,47 @@ public class VentanaAgregarAcompanantes extends JFrame {
 		lblAgregar.setBounds(10, 11, 414, 14);
 		contentPane.add(lblAgregar);
 		
-		JButton button = new JButton("Cancelar");
-		button.setFont(new Font("Verdana", Font.PLAIN, 11));
-		button.setBounds(10, 230, 139, 20);
-		contentPane.add(button);
+		JDateChooser dateNacimiento = new JDateChooser();
+		dateNacimiento.setBounds(233, 126, 103, 20);
+		contentPane.add(dateNacimiento);
 		
-		JButton btnAgregar = new JButton(" Agregar");
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		txtNombre = new JTextField();
+		txtNombre.setFont(new Font("Verdana", Font.PLAIN, 11));
+		txtNombre.setColumns(10);
+		txtNombre.setBounds(233, 63, 103, 20);
+		contentPane.add(txtNombre);
+		
+		txtIdentificacion = new JTextField();
+		txtIdentificacion.setFont(new Font("Verdana", Font.PLAIN, 11));
+		txtIdentificacion.setColumns(10);
+		txtIdentificacion.setBounds(233, 84, 103, 20);
+		contentPane.add(txtIdentificacion);
+		
+		txtTelefono = new JTextField();
+		txtTelefono.setFont(new Font("Verdana", Font.PLAIN, 11));
+		txtTelefono.setColumns(10);
+		txtTelefono.setBounds(233, 105, 103, 20);
+		contentPane.add(txtTelefono);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(this);
+		btnCancelar.setFont(new Font("Verdana", Font.PLAIN, 11));
+		btnCancelar.setBounds(10, 230, 139, 20);
+		contentPane.add(btnCancelar);
+		
+		btnAgregar = new JButton(" Agregar");
+		btnAgregar.addActionListener(this);
 		btnAgregar.setFont(new Font("Verdana", Font.PLAIN, 11));
 		btnAgregar.setBounds(285, 230, 139, 20);
 		contentPane.add(btnAgregar);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btnCancelar) {
+			this.setVisible(false);
+		}
+		if(e.getSource() == btnAgregar) {
+			
+		}
 	}
 }
