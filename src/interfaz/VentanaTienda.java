@@ -260,6 +260,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 
 		if (e.getSource() == btnAVenta) {
 			int precioT = Integer.parseInt(precioTotal.getText());
+			verificarAgregar(listProductos.getSelectedValue(),spinnerCantidad.getValue());
 			model.addRow(new Object[]{listProductos.getSelectedValue(), ""+spinnerCantidad.getValue(), precioT+""});
 				 
 			miTienda.guardarVentaParcial(Integer.parseInt(spinnerCantidad.getValue() + ""), precioT,
@@ -268,7 +269,7 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		}
 
 		if (e.getSource() == btnComprar) {
-			int totalVentaCompleta = miTienda.crearVentaCompleta();
+			int totalVentaCompleta = miTienda.crearVentaCompleta("");
 			table.removeAll();
 			int cantidad = miTienda.getMisProductos().get(listProductos.getSelectedIndex()).getCantidad();
 			inventario.setText(cantidad + "");
@@ -293,6 +294,13 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		
 	}
 	
+	private void verificarAgregar(Object selectedValue, Object value) {
+		for (int i = 0; i < table.getRowCount(); i++) {
+			//
+		}
+		
+	}
+
 	public void limpiar() {
 		int fila = table.getRowCount();
 		
