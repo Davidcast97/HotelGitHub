@@ -2,12 +2,13 @@ package logica.LogTienda;
 
 public class Producto {
 	private String nombre;
+	private int idProducto;
 	private int precio;
 	private int cantidad;
 	private int categoria;
 	
-	public Producto(String nombre, int precio, int cantidad, int categoria) {
-		super();
+	public Producto(String nombre, int precio, int cantidad, int categoria,int idProd) {
+		this.idProducto = idProd;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
@@ -50,6 +51,12 @@ public class Producto {
 	public int getCategoria() {
 
 		return categoria;
+	}
+
+
+	public int getIdProducto() {
+		// TODO Auto-generated method stub
+		return idProducto;
 	}
 	
 }

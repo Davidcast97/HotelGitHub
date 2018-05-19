@@ -47,7 +47,7 @@ public class archivoTienda {
 				int precio = Integer.parseInt(l[1]);
 				int cant = Integer.parseInt(l[2]);
 				int cate= Integer.parseInt(l[3]);
-				Producto p = new Producto(l[0], precio , cant, cate);
+				Producto p = new Producto(l[0], precio , cant, cate,0);
 				misProd.add(p);
 			}
 			br.close();
