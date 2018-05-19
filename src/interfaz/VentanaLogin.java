@@ -10,6 +10,7 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -75,7 +76,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		lblContrasea.setBounds(107, 80, 118, 56);
 		getContentPane().add(lblContrasea);
 
-		Contrasena = new JTextField();
+		Contrasena = new JPasswordField();
 		Contrasena.setBackground(UIManager.getColor("Button.darkShadow"));
 		Contrasena.setForeground(Color.BLACK);
 		Contrasena.setColumns(10);
@@ -103,9 +104,6 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setForeground(Color.WHITE);
 		lblFondo.setIcon(new ImageIcon(new File(".").getAbsolutePath() + "\\src\\imagenes\\1.2.jpg"));// "C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\1.2.jpg"
-
-		System.out.println(new File("").getAbsolutePath() + "\\src\\imagenes\\1.2.jpg");
-
 		lblFondo.setBounds(0, 0, 490, 278);
 		contentpane.add(lblFondo);
 	}
@@ -118,8 +116,9 @@ public class VentanaLogin extends JFrame implements ActionListener {
 				VentanaCrear window = new VentanaCrear(hotel);
 				window.setVisible(true);
 				lblIncorrecto.setText("Entro");
+			}else {
+				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
 			}
-			
 			if(hotel.comprobarAdministrador(Usuario.getText(), Contrasena.getText()))   {
 				
 				VentanaAdministrador window= new VentanaAdministrador(Usuario.getText(), Contrasena.getText());
@@ -129,9 +128,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 			//if(Administrador= ad.comprobarRecepcionista(Usuario.getText(), Contrasena.getText())) {
 				
 			//}
-			else {
-				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
-			}
+			
 		}
 		if (e.getSource().equals(btnSalir)) {
 			System.exit(0);

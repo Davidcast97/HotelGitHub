@@ -4,24 +4,20 @@ import java.util.ArrayList;
 
 
 public class Hotel {
-	private ArrayList<Administrador> misAdministradores;
-	
-
+	private ArrayList<Empleado> misEmpleados;
 	
 		public Hotel() {
-			misAdministradores= new ArrayList<Administrador>();
+			misEmpleados= new ArrayList<Empleado>();
 			
 		}
 	
-		public void crearAdminitradores(String nombre, String cedula, String telefono, String contrasena, String login) {
+		public void crearAdminitradores(String nombre, String cedula, String telefono, String login, String contrasena, boolean admin) {
+			misEmpleados.add(new Administrador(nombre,cedula,telefono,login,contrasena,admin));
 		
-		misAdministradores.add(new Administrador(nombre, cedula, telefono, contrasena, login));
-		System.out.println(misAdministradores.size());
-		System.out.println("Adminitrador Creado");
 	}
 		public boolean comprobarAdministrador(String login, String contrasena) {
-			for (int i = 0; i < misAdministradores.size(); i++) {
-				if(misAdministradores.get(i).getLogin().equals(login) && misAdministradores.get(i).getContrasena().equals(contrasena)) {
+			for (int i = 0; i < misEmpleados.size(); i++) {
+				if(misEmpleados.get(i).getLogin().equals(login) && misEmpleados.get(i).getContrasena().equals(contrasena)) {
 					return true;
 				}
 			}
