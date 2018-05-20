@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import logica.Hotel;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 public class VentanaCrear extends JFrame implements ActionListener {
@@ -64,13 +65,13 @@ public class VentanaCrear extends JFrame implements ActionListener {
 		lblContrasena = new JLabel("Contrase\u00F1a :");
 		lblContrasena.setForeground(Color.BLACK);
 		lblContrasena.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
-		lblContrasena.setBounds(50, 129, 95, 26);
+		lblContrasena.setBounds(50, 152, 95, 26);
 		contentPane.add(lblContrasena);
 		
 		JLabel lblLogin = new JLabel("Login :");
 		lblLogin.setForeground(Color.BLACK);
 		lblLogin.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
-		lblLogin.setBounds(50, 152, 95, 26);
+		lblLogin.setBounds(50, 130, 95, 26);
 		contentPane.add(lblLogin);
 
 		txtNombre = new JTextField();
@@ -94,13 +95,13 @@ public class VentanaCrear extends JFrame implements ActionListener {
 		txtContrasena = new JTextField();
 		txtContrasena.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
 		txtContrasena.setColumns(10);
-		txtContrasena.setBounds(155, 133, 86, 20);
+		txtContrasena.setBounds(155, 156, 86, 20);
 		contentPane.add(txtContrasena);
 		
 		txtLogin = new JTextField();
 		txtLogin.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
 		txtLogin.setColumns(10);
-		txtLogin.setBounds(155, 156, 86, 20);
+		txtLogin.setBounds(155, 134, 86, 20);
 		contentPane.add(txtLogin);
 		
 		btnGuargar = new JButton("Guargar");
@@ -123,10 +124,11 @@ public class VentanaCrear extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnGuargar)) {
-		hotel2.crearAdminitradores(txtNombre.getText(), txtCedula.getText(), txtTelefono.getText(),txtContrasena.getText(),txtLogin.getText());	
+		hotel2.crearAdminitradores(txtNombre.getText(), txtCedula.getText(), txtTelefono.getText(),txtContrasena.getText(),txtLogin.getText(),true);	
+		JOptionPane.showMessageDialog(null, "Administrador Creado");
 		
 		}if(e.getSource().equals(btnSalir)) {
-			
+			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		}
 	}
 }
