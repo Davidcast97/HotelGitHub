@@ -1,0 +1,24 @@
+101;15000;baja;true;2;dos camas sencillas, refrigerador pequeño, un baño privado
+102;15000;baja;true;3;dos camas sencillas, una cama doble, refrigerador mediano, un baño privado
+103;15000;baja;true;1;una cama sencilla, refrigerador pequeño, un baño privado
+104;15000;baja;true;2;dos camas dobles, refrigerador pequeño, un baño privado
+105;15000;baja;true;3;un camarote, una cama doble, refrigerador grande, dos baños privados
+106;15000;baja;true;2;dos camas sencillas, refrigerador pequeño, un baño privado
+201;15000;baja;true;1;una cama doble, refrigerador pequeño, un baño privado
+202;15000;baja;true;2;dos camas sencillas, refrigerador pequeño, un baño privado
+203;15000;baja;true;1;una cama sencilla, un baño privado
+204;15000;baja;true;1;una cama doble, refrigerador mediano, un baño privado
+205;15000;baja;true;2;un camarote, refrigerador pequeño, un baño privado
+206;15000;baja;true;2;dos camas sencillas, refrigerador mediano, un baño privado
+301;15000;baja;true;4;dos camarotes, refrigerador grande, dos baños privados
+302;15000;baja;true;2;un camarote, refrigerador pequeño, un baño privado
+303;15000;baja;true;1;una cama doble, refrigerador pequeño, un baño privado
+304;15000;baja;true;2;dos camas sencillas, refrigerador pequeño, un baño privado
+305;15000;baja;true;2;un camarote, refrigerador mediano, un baño privado
+306;15000;baja;true;1;una cama sencilla, refrigerador pequeño, un baño privado
+401;15000;baja;true;4;dos camarotes, refrigerador grande, dos baños privados
+402;15000;baja;true;1;una cama doble, refrigerador pequeño, un baño privado
+403;15000;baja;true;2;un camarote, refrigerador mediano, un baño privado
+404;15000;baja;true;1;una cama doble, refrigerador mediano, un baño privado
+405;15000;baja;true;4;dos camarotes, refrigerador mediano, un baño privado
+406;15000;baja;true;1;una cama sencilla, refrigerador pequeñ0, un baño privado
