@@ -35,20 +35,20 @@ public class VentanaHabitaciones extends JFrame implements ActionListener{
 		this.add(contenedorSuperior, BorderLayout.NORTH);
 	}
 	public void panelCentral(){	
-		matrizBotones = new JButton[10][10];
+		matrizBotones = new JButton[4][6];
 		contenedorCentral = new JPanel();
-		contenedorCentral.setLayout(new GridLayout(10, 10));
+		contenedorCentral.setLayout(new GridLayout(4, 6));
 		int numero = 0;
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < matrizBotones.length; i++){
 			numero += 100;
-			for(int j = 0; j < 10; j++){
-				numero += j;
+			for(int j = 0; j < matrizBotones[0].length; j++){
+				numero += j + 1;
 				JButton boton = new JButton(""+numero);
 				boton.setFont(new Font("Verdana", Font.PLAIN, 11));
 				matrizBotones[i][j] = boton;
 				this.matrizBotones[i][j].addActionListener(this);
 				contenedorCentral.add(matrizBotones[i][j]);
-				numero -= j;
+				numero -= j + 1;
 			}
 		}
 		this.add(contenedorCentral, BorderLayout.CENTER);
