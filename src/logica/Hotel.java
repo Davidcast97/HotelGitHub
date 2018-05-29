@@ -146,5 +146,38 @@ public class Hotel {
 
 		return lista;
 	}
+	public String eliminarRecepcionista(String cedula) {
+		String mensaje = "";
+		String cadena = "";
+		try {
+			FileReader fr = new FileReader(archivo);
+			BufferedReader br = new BufferedReader(fr);
+
+			while ((cadena = br.readLine()) != null) {
+				String[] partes = cadena.split(";");
+				String parteCedula = partes[1];
+				if (parteCedula.equals(cedula)) {
+					System.out.println("SI");
+					mensaje += "";
+				} else {
+					mensaje += cadena + "\n";
+				}
+
+			}
+			FileWriter fw = new FileWriter(archivo);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(mensaje);
+			bw.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+
+		return mensaje;
+
+	}
+
 
 }
