@@ -1,17 +1,18 @@
-package logica;
+package logica.Reservas;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 public class RegistroPersonal {
 	private int id;
 	private GregorianCalendar checkIn;
 	private GregorianCalendar checkOut;
 	private String miIdPersonaTitular;
-	private Habitacion miHabitacion;
-	public RegistroPersonal(int id, GregorianCalendar checkIn,GregorianCalendar checkOut, String miIdPersonaTitular, Habitacion miHabitacion) {
+	private ArrayList<Habitacion> misHabitaciones;
+	public RegistroPersonal(int id, GregorianCalendar checkIn,GregorianCalendar checkOut, String miIdPersonaTitular,ArrayList<Habitacion> misHabitaciones) {
 		this.id = id;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.miIdPersonaTitular = miIdPersonaTitular;
-		this.miHabitacion = miHabitacion;
+		this.misHabitaciones = misHabitaciones;
 	}
 	public GregorianCalendar getCheckIn() {
 		return checkIn;
@@ -31,11 +32,11 @@ public class RegistroPersonal {
 	public void setMiIdPersonaTitular(String miIdPersonaTitular) {
 		this.miIdPersonaTitular = miIdPersonaTitular;
 	}
-	public Habitacion getMiHabitacion() {
-		return miHabitacion;
+	public ArrayList<Habitacion> getMisHabitaciones() {
+		return misHabitaciones;
 	}
-	public void setMiHabitacion(Habitacion miHabitacion) {
-		this.miHabitacion = miHabitacion;
+	public void setMisHabitaciones(ArrayList<Habitacion> misHabitaciones) {
+		this.misHabitaciones = misHabitaciones;
 	}
 	public int getId() {
 		return id;

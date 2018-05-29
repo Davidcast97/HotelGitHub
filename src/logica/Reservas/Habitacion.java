@@ -1,4 +1,4 @@
-package logica;
+package logica.Reservas;
 
 public class Habitacion {
 	private String nombre;

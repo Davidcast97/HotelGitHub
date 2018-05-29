@@ -8,8 +8,8 @@ import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
 import base_datos.ConexionTienda;
-import logica.Habitacion;
 import logica.LogTienda.VentaParcial;
+import logica.Reservas.Habitacion;
 import logica.LogTienda.VentaCompleta;
 
 public class Tienda {

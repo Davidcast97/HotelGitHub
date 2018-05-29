@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-import logica.Habitacion;;
+import logica.Reservas.Habitacion;;
 
 public class VentaCompleta {
 	private String fecha;

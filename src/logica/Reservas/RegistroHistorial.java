@@ -1,4 +1,4 @@
-package logica;
+package logica.Reservas;
 
 import java.util.ArrayList;
 

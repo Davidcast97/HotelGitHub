@@ -28,9 +28,9 @@ import java.awt.event.ActionEvent;
 
 import logica.Administrador;
 import logica.Empleado;
-import logica.Habitacion;
 import logica.LogTienda.Producto;
 import logica.LogTienda.Tienda;
+import logica.Reservas.Habitacion;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;

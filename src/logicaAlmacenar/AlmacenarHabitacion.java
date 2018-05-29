@@ -11,12 +11,11 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import logica.Habitacion;
-import logica.Tarifa;
+import logica.Reservas.Habitacion;
+import logica.Reservas.Tarifa;
 
 public class AlmacenarHabitacion {
 	private File archivo;
-	private File archivoClientesPromocion;
 	public AlmacenarHabitacion() {
 		archivo = new File("src//Data//habitaciones.txt");
 	}

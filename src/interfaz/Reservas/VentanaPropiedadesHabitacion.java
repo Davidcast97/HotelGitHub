@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import logica.Habitacion;
+import logica.Reservas.Habitacion;
 import logicaAlmacenar.AlmacenarHabitacion;
 
 import javax.swing.JLabel;
