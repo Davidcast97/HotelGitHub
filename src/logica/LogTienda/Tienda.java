@@ -19,7 +19,7 @@ public class Tienda {
 	private ArrayList<VentaParcial> misVentasParciales;  
 	private String[] categorias;
 	private ConexionTienda ConTienda;
-	private archivoTienda archT;
+	//private archivoTienda archT;
 	
 	public Tienda(){
 		String c[] = {"BEBIDAS" ,"SOLIDOS","LICORES","ASEO"};
@@ -50,7 +50,7 @@ public class Tienda {
 		}
 		VentaCompleta vc = new VentaCompleta(misVentasParciales,hab,descripcion.substring(0,descripcion.length()-2));
 		ConTienda.guardarVentaCompleta(vc);
-		//archT.setMisProd(misProductos);
+		//archT.setMisProd(misProductos);------------------
 		misVentasCompletas.add(vc);
 		misVentasParciales= new ArrayList<VentaParcial>();
 		return vc.getPrecioTotal();

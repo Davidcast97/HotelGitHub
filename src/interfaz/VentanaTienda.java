@@ -57,10 +57,6 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 	private JPanel tablePanel;
 	private TableColumnModel columnModel;
 
-	/**
-	 * Launch the application.
-	 * 
-	 */
 
 	public static void main(String[] args) {
 
@@ -108,8 +104,8 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		estado = new JLabel("");
 		estado.setForeground(new Color(0, 0, 0));
 		estado.setHorizontalAlignment(SwingConstants.CENTER);
-		estado.setFont(new Font("Tahoma", Font.ITALIC, 15));
-		estado.setBounds(265, 440, 199, 20);
+		estado.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		estado.setBounds(265, 440, 210, 20);
 		frame.getContentPane().add(estado);
 
 		btnFiar = new JButton("Fiar");
@@ -260,12 +256,14 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 
 		if (e.getSource() == btnAVenta) {
 			int precioT = Integer.parseInt(precioTotal.getText());
-			verificarAgregar(listProductos.getSelectedValue(),spinnerCantidad.getValue());
-			model.addRow(new Object[]{listProductos.getSelectedValue(), ""+spinnerCantidad.getValue(), precioT+""});
-				 
-			miTienda.guardarVentaParcial(Integer.parseInt(spinnerCantidad.getValue() + ""), precioT,
-					miTienda.getMisProductos().get(listProductos.getSelectedIndex()));
-			estado.setText("Producto agregado");
+			boolean verificado = verificarAgregar(listProductos.getSelectedValue(),spinnerCantidad.getValue());
+			if (verificado) {
+				model.addRow(new Object[]{listProductos.getSelectedValue(), ""+spinnerCantidad.getValue(), precioT+""});
+				
+				miTienda.guardarVentaParcial(Integer.parseInt(spinnerCantidad.getValue() + ""), precioT,
+						miTienda.getMisProductos().get(listProductos.getSelectedIndex()));
+				estado.setText("Producto agregado");	
+			}
 		}
 
 		if (e.getSource() == btnComprar) {
@@ -294,10 +292,20 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		
 	}
 	
-	private void verificarAgregar(Object selectedValue, Object value) {
+	private boolean verificarAgregar(Object selectedValue, Object value) {
 		for (int i = 0; i < table.getRowCount(); i++) {
-			//
+			
+			String smod =  (String)model.getValueAt(i, 0);
+			String select = (String)selectedValue;
+			System.out.println(smod+" "+select+" "+smod.equals(select));
+			if (smod.equals(select)) {
+				
+				JOptionPane.showMessageDialog(null, "No puede volver a agregar el producto. Limpie la ventana en caso de necesitar cambiar la cantidad del producto");
+				return false;
+			}
 		}
+		System.err.println("---------------");
+		return true;
 		
 	}
 
