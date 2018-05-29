@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.Tienda;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -46,7 +46,7 @@ import java.awt.Color;
 public class VentanaTienda implements ActionListener, ListSelectionListener, ChangeListener {
 
 	private JFrame frame;
-	private JButton btnComprar, btnFiar, btnAVenta,btnLimpiar ;
+	private JButton btnComprar, btnFiar, btnAVenta,btnLimpiar,btnAdmin ;
 	private JLabel precioUnitario, precioTotal, inventario,estado;
 	private JComboBox<String> comboBoxHabitaciones;
 	private JList listProductos;
@@ -221,6 +221,11 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 		btnLimpiar.setBounds(314, 406, 103, 23);
 		btnLimpiar.addActionListener(this);
 		frame.getContentPane().add(btnLimpiar);
+		
+		btnAdmin = new JButton("Admin");
+		btnAdmin.setBounds(425, 374, 50, 23);
+		btnAdmin.addActionListener(this);
+		frame.getContentPane().add(btnAdmin);
 		model.removeRow(0);
 		
 	}
@@ -253,6 +258,11 @@ public class VentanaTienda implements ActionListener, ListSelectionListener, Cha
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		
+		if (e.getSource()==btnAdmin) {
+			VentanaAdminTienda vat= new VentanaAdminTienda();
+			
+		}
 
 		if (e.getSource() == btnAVenta) {
 			int precioT = Integer.parseInt(precioTotal.getText());

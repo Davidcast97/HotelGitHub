@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import logica.Habitacion;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -78,7 +80,11 @@ public class VentanaPropiedadesHabitacion extends JFrame implements ActionListen
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Verdana", Font.PLAIN, 14));
 		textArea.setBounds(10, 131, 233, 87);
-		contentPane.add(textArea);
+		//contentPane.add(textArea);
+		
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setBounds(10, 131, 233, 87);
+		contentPane.add(scrollPane);
 		
 		btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(this);
