@@ -23,7 +23,7 @@ public class VentanaCrearRecepcionista extends JFrame implements ActionListener 
 
 	private JPanel contentPane;
 	private JTextField txtCedula, txtNombre, txtTelefono;
-	private JLabel lblContrasena;
+	private JLabel lblContrasena, lblIncorrecto;
 	private JTextField txtContrasena;
 	private JTextField txtLogin;
 	private Hotel hotel2;
@@ -110,6 +110,13 @@ public class VentanaCrearRecepcionista extends JFrame implements ActionListener 
 		btnGuargar.setBounds(50, 189, 89, 23);
 		contentPane.add(btnGuargar);
 		btnGuargar.addActionListener(this);
+		
+		lblIncorrecto = new JLabel();
+		lblIncorrecto.setForeground(Color.RED);
+		lblIncorrecto.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
+		lblIncorrecto.setBounds(23, 217, 263, 43);
+		getContentPane().add(lblIncorrecto);
+
 
 	}
 
@@ -118,15 +125,20 @@ public class VentanaCrearRecepcionista extends JFrame implements ActionListener 
 			if (!(txtNombre.getText().length() == 0 || txtCedula.getText().length() == 0
 					|| txtContrasena.getText().length() == 0 || txtTelefono.getText().length() == 0
 					|| txtLogin.getText().length() == 0)) {
+				lblIncorrecto.setText("");
 				if ((hotel2.existe(txtLogin.getText()))) {
 					JOptionPane.showMessageDialog(null, "Usuario Existente");
 				} else {
-
 					Recepcionista miRecep = new Recepcionista(txtNombre.getText(), txtCedula.getText(),
 							txtTelefono.getText(), txtLogin.getText(), txtContrasena.getText());
 					hotel2.crearRecepcionistas(miRecep);
 					JOptionPane.showMessageDialog(null, "Recepcionista Creado");
+					setVisible(false);
 				}
+			}
+			else {
+				lblIncorrecto.setText("Falta algun dato");
+
 			}
 		}
 

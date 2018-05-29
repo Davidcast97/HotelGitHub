@@ -102,22 +102,24 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		getContentPane().add(btnSalir);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(
-				new File("").getAbsolutePath()+ "\\src\\imagenes\\madera1.jpg"));
-		System.out.println(new File("").getAbsolutePath()+ "\\src\\imagenes\\madera1.jpg");
+		lblNewLabel.setIcon(new ImageIcon(new File("").getAbsolutePath()+"\\src\\imagenes\\FondoSuave.jpg"));
+		System.out.println(	new File("").getAbsolutePath()+"\\src\\imagenes\\FondoSuave.jpg");
+
 		lblNewLabel.setBounds(0, 0, 490, 278);
 		getContentPane().add(lblNewLabel);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		boolean centinela = true;
-		if (e.getSource().equals(btnIngresar)) {
+		if (e.getSource().equals(btnIngresar) && Usuario.getText().length()!=0 &&Contrasena.getText().length()!=0) {
 			if (Usuario.getText().equals("Admin") && Contrasena.getText().equals("123")) {
 				lblIncorrecto.setText("");
-				// setVisible(false);
 				VentanaCrearAdministrador window = new VentanaCrearAdministrador(hotel);
 				window.setVisible(true);
 				centinela = false;
+				Usuario.setText("");
+				Contrasena.setText("");
+				
 			}
 			if (hotel.comprobarEmpleado(Usuario.getText(), Contrasena.getText())) {
 				lblIncorrecto.setText("");
@@ -129,8 +131,10 @@ public class VentanaLogin extends JFrame implements ActionListener {
 					window.setVisible(true);
 				}
 				centinela = false;
+				Usuario.setText("");
+				Contrasena.setText("");
 			} else if (centinela) {
-				lblIncorrecto.setText("Usuario o Contraseï¿½a Incorrecta");
+				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
 			}
 
 		}
@@ -146,5 +150,13 @@ public class VentanaLogin extends JFrame implements ActionListener {
 
 	public void setUsuario(JTextField usuario) {
 		Usuario = usuario;
+	}
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
 	}
 }
