@@ -1,70 +1,107 @@
 package interfaz;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logica.Habitacion;
+import logicaAlmacenar.AlmacenarHabitacion;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class VentanaPropiedadesHabitacion extends JFrame {
+public class VentanaPropiedadesHabitacion extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private JButton btnAtras;
+	private JButton btnAgregar;
+	private VentanaHabitaciones ventana;
+	private AlmacenarHabitacion habitaciones;
+	private String nombre;
 
-	public VentanaPropiedadesHabitacion() {
-		setBounds(100, 100, 269, 359);
+	public VentanaPropiedadesHabitacion(VentanaHabitaciones ventana, String nombre) { 
+		this.ventana = ventana;
+		this.nombre = nombre;
+		habitaciones = new AlmacenarHabitacion();
+		setBounds(100, 100, 269, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblHabitacion = new JLabel("Habitacion: ");
-		lblHabitacion.setFont(new Font("Verdana", Font.PLAIN, 15));
+		Habitacion mihabitacion = habitaciones.buscarHabitacion(nombre);
+		
+		JLabel lblHabitacion = new JLabel("Habitaci\u00F3n: "+ mihabitacion.getNombre());
+		lblHabitacion.setFont(new Font("Verdana", Font.PLAIN, 14));
 		lblHabitacion.setBounds(10, 11, 233, 20);
 		contentPane.add(lblHabitacion);
 		
-		JLabel lblTemporada = new JLabel("Temporada:");
-		lblTemporada.setFont(new Font("Verdana", Font.PLAIN, 15));
-		lblTemporada.setBounds(10, 36, 233, 20);
+		JLabel lblTemporada = new JLabel("Temporada:"+mihabitacion.getTarifa().getTemporada());
+		lblTemporada.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblTemporada.setBounds(10, 31, 233, 20);
 		contentPane.add(lblTemporada);
 		
-		JLabel lblTarifa = new JLabel("Tarifa:");
-		lblTarifa.setFont(new Font("Verdana", Font.PLAIN, 15));
-		lblTarifa.setBounds(10, 61, 233, 20);
+		JLabel lblTarifa = new JLabel("Tarifa:"+mihabitacion.getTarifa().getValor());
+		lblTarifa.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblTarifa.setBounds(10, 51, 233, 20);
 		contentPane.add(lblTarifa);
 		
-		JLabel lblEstado = new JLabel("Estado:");
-		lblEstado.setFont(new Font("Verdana", Font.PLAIN, 15));
-		lblEstado.setBounds(10, 86, 233, 20);
+		JLabel lblEstado = new JLabel("Estado:"+mihabitacion.getEstado());
+		lblEstado.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblEstado.setBounds(10, 71, 233, 20);
 		contentPane.add(lblEstado);
 		
-		JLabel lblCamas = new JLabel("Camas:");
-		lblCamas.setFont(new Font("Verdana", Font.PLAIN, 15));
-		lblCamas.setBounds(10, 111, 233, 20);
+		JLabel lblCamas = new JLabel("Camas:"+mihabitacion.getNumeroCamas());
+		lblCamas.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblCamas.setBounds(10, 91, 233, 20);
 		contentPane.add(lblCamas);
 		
 		JLabel lblDetalles = new JLabel("Detalles:");
-		lblDetalles.setFont(new Font("Verdana", Font.PLAIN, 15));
-		lblDetalles.setBounds(10, 136, 233, 20);
+		lblDetalles.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblDetalles.setBounds(10, 111, 233, 20);
 		contentPane.add(lblDetalles);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("Verdana", Font.PLAIN, 15));
-		textArea.setBounds(10, 161, 233, 114);
+		String[] arreglo = mihabitacion.getDetalles().split(",");
+		String mostrar = "";
+		for (int i = 0; i < arreglo.length; i++) {
+			mostrar += arreglo[i]+"\n";
+		}
+		JTextArea textArea = new JTextArea(mostrar);
+		textArea.setEditable(false);
+		textArea.setFont(new Font("Verdana", Font.PLAIN, 14));
+		textArea.setBounds(10, 131, 233, 87);
 		contentPane.add(textArea);
 		
-		JButton btnAtras = new JButton("Atras");
-		btnAtras.setFont(new Font("Verdana", Font.PLAIN, 15));
-		btnAtras.setBounds(10, 286, 106, 23);
+		btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(this);
+		btnAtras.setFont(new Font("Verdana", Font.PLAIN, 14));
+		btnAtras.setBounds(10, 229, 106, 23);
 		contentPane.add(btnAtras);
 		
-		JButton btnAgregar = new JButton("Ocupar");
-		btnAgregar.setFont(new Font("Verdana", Font.PLAIN, 15));
-		btnAgregar.setBounds(137, 286, 106, 23);
+		btnAgregar = new JButton("Ocupar");
+		btnAgregar.addActionListener(this);
+		btnAgregar.setFont(new Font("Verdana", Font.PLAIN, 14));
+		btnAgregar.setBounds(137, 229, 106, 23);
 		contentPane.add(btnAgregar);
+	}
+	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getSource() == btnAtras) {
+			this.setVisible(false);
+		}
+		if(arg0.getSource() == btnAgregar) {
+			this.setVisible(false);
+			int numero = Integer.parseInt(nombre);
+			int i = (numero/100)-1;
+			int j = (numero%100)-1;
+			ventana.pintarCasilla(i, j);
+		}
 	}
 }

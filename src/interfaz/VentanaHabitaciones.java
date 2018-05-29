@@ -18,11 +18,11 @@ public class VentanaHabitaciones extends JFrame implements ActionListener{
 	
 	private JPanel contenedorSuperior, contenedorCentral, contenedorInferior;
 	private JLabel titulo;
-	private JButton matrizBotones[][], btnBoton;
+	private JButton matrizBotones[][], btnAtras, btnContinuar;
 	private int tamanio;
 	
-	public VentanaHabitaciones(){//tamaño;
-		setBounds(100, 100, 650, 300);
+	public VentanaHabitaciones(){
+		setBounds(100, 100, 450, 300);
 		panelSuperior();
 		panelCentral();
 		panelInferior();
@@ -46,7 +46,7 @@ public class VentanaHabitaciones extends JFrame implements ActionListener{
 				JButton boton = new JButton(""+numero);
 				boton.setFont(new Font("Verdana", Font.PLAIN, 11));
 				matrizBotones[i][j] = boton;
-				this.matrizBotones[i][j].addActionListener(this);
+				matrizBotones[i][j].addActionListener(this);
 				contenedorCentral.add(matrizBotones[i][j]);
 				numero -= j + 1;
 			}
@@ -56,20 +56,36 @@ public class VentanaHabitaciones extends JFrame implements ActionListener{
 	public void panelInferior() {
 		contenedorInferior = new JPanel();
 		
-		btnBoton = new JButton("hola");
-		btnBoton.addActionListener(this);
-		btnBoton.setFont(new Font("Verdana", Font.PLAIN, 11));
-		contenedorInferior.add(btnBoton);
+		btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(this);
+		btnAtras.setFont(new Font("Verdana", Font.PLAIN, 11));
+		contenedorInferior.add(btnAtras);
+		
+		btnContinuar = new JButton("Continuar");
+		btnContinuar.addActionListener(this);
+		btnContinuar.setFont(new Font("Verdana", Font.PLAIN, 11));
+		contenedorInferior.add(btnContinuar);
 		
 		this.add(contenedorInferior, BorderLayout.SOUTH);
+	}
+	public void pintarCasilla(int i, int j) {
+		matrizBotones[i][j].setBackground(Color.red);
 	}
 	public void actionPerformed(ActionEvent e) {
 		for (int i = 0; i < matrizBotones.length; i++) {
 			for (int j = 0; j < matrizBotones[0].length; j++) {
 				if(e.getSource() == matrizBotones[i][j]) {
-					matrizBotones[i][j].setBackground(Color.red);
+					VentanaPropiedadesHabitacion ventana = new VentanaPropiedadesHabitacion(this, matrizBotones[i][j].getText());
+					ventana.setVisible(true);
 				}
 			}
+		}
+		if(e.getSource() == btnAtras) {
+			this.setVisible(false);
+		}
+		if(e.getSource() == btnContinuar) {
+			//verificar numero de camas.
+			
 		}
 	}
 }

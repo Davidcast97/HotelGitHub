@@ -203,7 +203,7 @@ public class VentanaRegistroPersonal extends JFrame implements ActionListener{
 		}
 		if(e.getSource() == btnGuardar) {
 			//verificar;
-			VentanaHabitaciones ventana = new VentanaHabitaciones();//NUMERO DE HABITACIONES;
+			VentanaHabitaciones ventana = new VentanaHabitaciones();
 			ventana.setVisible(true);
 		}
 	}

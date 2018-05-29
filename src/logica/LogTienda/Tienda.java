@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 
-//import base_datos.ConexionTienda;
+import base_datos.ConexionTienda;
 import logica.Habitacion;
 import logica.LogTienda.VentaParcial;
 import logica.LogTienda.VentaCompleta;
@@ -18,18 +18,18 @@ public class Tienda {
 	private ArrayList<VentaCompleta> misVentasCompletas;
 	private ArrayList<VentaParcial> misVentasParciales;  
 	private String[] categorias;
-	//private ConexionTienda ConTienda;
-	private archivoTienda archT;
+	private ConexionTienda ConTienda;
+	//private archivoTienda archT;
 	
 	public Tienda(){
 		String c[] = {"BEBIDAS" ,"SOLIDOS","LICORES","ASEO"};
 		categorias = c;
 		misProductos = new ArrayList<Producto>();
 		
-		archT = new archivoTienda();
-		//ConTienda = new ConexionTienda(); 
-		//misProductos = ConTienda.getMisProd();
-		misProductos = archT.getMisProd();
+		//archT = new archivoTienda();
+		ConTienda = new ConexionTienda(); 
+		misProductos = ConTienda.getMisProd();
+		//misProductos = archT.getMisProd();
 			
 		
 		misVentasCompletas = new ArrayList<VentaCompleta>();
@@ -49,8 +49,8 @@ public class Tienda {
 			}
 		}
 		VentaCompleta vc = new VentaCompleta(misVentasParciales,hab,descripcion.substring(0,descripcion.length()-2));
-		//ConTienda.guardarVentaCompleta(vc);
-		archT.setMisProd(misProductos);
+		ConTienda.guardarVentaCompleta(vc);
+		//archT.setMisProd(misProductos);------------------
 		misVentasCompletas.add(vc);
 		misVentasParciales= new ArrayList<VentaParcial>();
 		return vc.getPrecioTotal();
