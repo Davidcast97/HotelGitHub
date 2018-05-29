@@ -29,6 +29,7 @@ public class VentanaCrearAdministrador extends JFrame implements ActionListener 
 	private JButton btnGuargar;
 	private Hotel hotel2;
 	private JButton btnSalir;
+	private JLabel lblIncorrecto;
 
 	/**
 	 * Create the frame.
@@ -119,29 +120,35 @@ public class VentanaCrearAdministrador extends JFrame implements ActionListener 
 		btnSalir.setBounds(190, 189, 89, 23);
 		btnSalir.addActionListener(this);
 		contentPane.add(btnSalir);
+		
+		lblIncorrecto = new JLabel();
+		lblIncorrecto.setForeground(Color.RED);
+		lblIncorrecto.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
+		lblIncorrecto.setBounds(32, 205, 263, 56);
+		contentPane.add(lblIncorrecto);
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnGuargar)) {
-			if(true) {
-				
 			
-				
+			if (!(txtNombre.getText().length() == 0 || txtCedula.getText().length() == 0
+					|| txtContrasena.getText().length() == 0|| txtTelefono.getText().length() == 0|| txtLogin.getText().length()==0)) {
+				lblIncorrecto.setText("");
 				if ((hotel2.existe(txtLogin.getText()))) {
-				JOptionPane.showMessageDialog(null, "Usuario Existente");
-			} else {
+					JOptionPane.showMessageDialog(null, "Usuario Existente");
+				} else {
 
-				Administrador miAdmin = new Administrador(txtNombre.getText(), txtCedula.getText(),
-						txtTelefono.getText(), txtLogin.getText(), txtContrasena.getText());
-				hotel2.crearAdminitradores(miAdmin);
-				JOptionPane.showMessageDialog(null, "Administrador Creado");
+					Administrador miAdmin = new Administrador(txtNombre.getText(), txtCedula.getText(),
+							txtTelefono.getText(), txtLogin.getText(), txtContrasena.getText());
+					hotel2.crearAdminitradores(miAdmin);
+					JOptionPane.showMessageDialog(null, "Administrador Creado");
+				}
+			}else {
+				lblIncorrecto.setText("Falta algun dato");
 			}
-		}
-		if (e.getSource().equals(btnSalir)) {
-			System.exit(0);
-
-		}
+		}if (e.getSource().equals(btnSalir)) {
+			setVisible(false);
 		}
 
 	}
