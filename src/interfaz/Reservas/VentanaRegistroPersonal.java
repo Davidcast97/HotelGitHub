@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.Reservas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import com.toedter.components.JSpinField;
+
+import interfaz.Principal.VentanaRecepcionista;
+
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.components.JLocaleChooser;
@@ -32,27 +35,10 @@ public class VentanaRegistroPersonal extends JFrame implements ActionListener{
 	private JButton btnGuardar;
 	private JButton btnAgregar;
 	private JButton btnCancelar;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaRegistroPersonal frame = new VentanaRegistroPersonal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public VentanaRegistroPersonal() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	private VentanaRecepcionista miVentanaRecepcionista;
+	
+	public VentanaRegistroPersonal(VentanaRecepcionista miVentanaRecepcionista) {
+		this.miVentanaRecepcionista = miVentanaRecepcionista;
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

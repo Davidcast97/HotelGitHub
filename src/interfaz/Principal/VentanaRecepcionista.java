@@ -8,10 +8,15 @@ import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import interfaz.Reservas.VentanaRegistroPersonal;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class VentanaRecepcionista extends JFrame {
+public class VentanaRecepcionista extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JLabel lblUsuario, lblVentanaRecepcionista ;
@@ -41,8 +46,15 @@ public class VentanaRecepcionista extends JFrame {
 		contentPane.add(btnTienda);
 		
 		btnReservas = new JButton("Reservas");
+		btnReservas.addActionListener(this);
 		btnReservas.setBounds(41, 122, 89, 23);
 		contentPane.add(btnReservas);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btnReservas) {
+			VentanaRegistroPersonal ventana = new VentanaRegistroPersonal(this);
+			ventana.setVisible(true);
+		}
 	}
 
 }
