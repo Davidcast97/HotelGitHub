@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.Principal;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,35 +7,38 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import logica.Administrador;
 import logica.Hotel;
-import logica.Recepcionista;
 
-public class VentanaCrearRecepcionista extends JFrame implements ActionListener {
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
 
+public class VentanaCrearAdministrador extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField txtCedula, txtNombre, txtTelefono;
 	private JLabel lblContrasena;
 	private JTextField txtContrasena;
 	private JTextField txtLogin;
-	private Hotel hotel2;
 	private JButton btnGuargar;
+	private Hotel hotel2;
+	private JButton btnSalir;
 
-	public VentanaCrearRecepcionista() {
+	/**
+	 * Create the frame.
+	 * 
+	 * @param hotel2
+	 */
+	public VentanaCrearAdministrador(Hotel hotel2) {
 		this.hotel2 = hotel2;
-		hotel2= new Hotel();
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 450, 405);
-		setLocationRelativeTo(null);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,13 +61,13 @@ public class VentanaCrearRecepcionista extends JFrame implements ActionListener 
 		lblTelefono.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
 		lblTelefono.setBounds(50, 106, 95, 26);
 		contentPane.add(lblTelefono);
-		
+
 		lblContrasena = new JLabel("Contrase\u00F1a :");
 		lblContrasena.setForeground(Color.BLACK);
 		lblContrasena.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
 		lblContrasena.setBounds(50, 152, 95, 26);
 		contentPane.add(lblContrasena);
-		
+
 		JLabel lblLogin = new JLabel("Login :");
 		lblLogin.setForeground(Color.BLACK);
 		lblLogin.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
@@ -88,44 +91,58 @@ public class VentanaCrearRecepcionista extends JFrame implements ActionListener 
 		txtTelefono.setColumns(10);
 		txtTelefono.setBounds(155, 110, 86, 20);
 		contentPane.add(txtTelefono);
-		
+
 		txtContrasena = new JTextField();
 		txtContrasena.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
 		txtContrasena.setColumns(10);
 		txtContrasena.setBounds(155, 156, 86, 20);
 		contentPane.add(txtContrasena);
-		
+
 		txtLogin = new JTextField();
 		txtLogin.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
 		txtLogin.setColumns(10);
 		txtLogin.setBounds(155, 134, 86, 20);
 		contentPane.add(txtLogin);
-		
-		JLabel lblCrearAdminitrador = new JLabel("Crear Recepcionista");
-		lblCrearAdminitrador.setForeground(Color.BLACK);
-		lblCrearAdminitrador.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
-		lblCrearAdminitrador.setBounds(113, 11, 166, 26);
-		contentPane.add(lblCrearAdminitrador);
-	
+
 		btnGuargar = new JButton("Guargar");
 		btnGuargar.setBounds(50, 189, 89, 23);
 		contentPane.add(btnGuargar);
 		btnGuargar.addActionListener(this);
-	
+
+		JLabel lblCrearAdminitrador = new JLabel("Crear Adminitrador");
+		lblCrearAdminitrador.setForeground(Color.BLACK);
+		lblCrearAdminitrador.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
+		lblCrearAdminitrador.setBounds(113, 11, 166, 26);
+		contentPane.add(lblCrearAdminitrador);
+
+		btnSalir = new JButton("Salir");
+		btnSalir.setBounds(190, 189, 89, 23);
+		btnSalir.addActionListener(this);
+		contentPane.add(btnSalir);
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnGuargar)) {
-			if ((hotel2.existe(txtLogin.getText()))) {
+			if(true) {
+				
+			
+				
+				if ((hotel2.existe(txtLogin.getText()))) {
 				JOptionPane.showMessageDialog(null, "Usuario Existente");
 			} else {
 
-				Recepcionista miRecep = new Recepcionista(txtNombre.getText(), txtCedula.getText(),
+				Administrador miAdmin = new Administrador(txtNombre.getText(), txtCedula.getText(),
 						txtTelefono.getText(), txtLogin.getText(), txtContrasena.getText());
-				hotel2.crearRecepcionistas(miRecep);
-				JOptionPane.showMessageDialog(null, "Recepcionista Creado");
+				hotel2.crearAdminitradores(miAdmin);
+				JOptionPane.showMessageDialog(null, "Administrador Creado");
 			}
 		}
-		
+		if (e.getSource().equals(btnSalir)) {
+			System.exit(0);
+
+		}
+		}
+
 	}
 }

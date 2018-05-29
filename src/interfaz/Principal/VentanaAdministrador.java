@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.Principal;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -65,7 +66,7 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 		btnListarRecepcionistas.addActionListener(this);
 		contentPane.add(btnListarRecepcionistas);
 
-		btnModificarRecepcionista = new JButton("Modificar Recepcionista");
+		btnModificarRecepcionista = new JButton("Eliminar Recepcionista");
 		btnModificarRecepcionista.setBounds(10, 149, 129, 23);
 		btnModificarRecepcionista.addActionListener(this);
 		contentPane.add(btnModificarRecepcionista);
@@ -84,6 +85,9 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 		}if(e.getSource().equals(btnCrearRecepcionista)) {
 			VentanaCrearRecepcionista VCR= new VentanaCrearRecepcionista();
 			VCR.setVisible(true);
+		}if(e.getSource().equals(btnModificarRecepcionista)) {
+			JOptionPane.showMessageDialog(null, "Para eliminar recepcionista Ingrese el Login:");
+			
 		}
 
 	}

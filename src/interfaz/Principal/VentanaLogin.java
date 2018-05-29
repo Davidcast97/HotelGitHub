@@ -1,11 +1,10 @@
-package interfaz;
+package interfaz.Principal;
 
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,14 +12,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-import java.awt.JobAttributes;
 
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
-import logica.Administrador;
 import logica.Hotel;;
 
 public class VentanaLogin extends JFrame implements ActionListener {
@@ -56,7 +52,6 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		setUndecorated(true);
 		setBounds(100, 100, 490, 278);
 		setLocationRelativeTo(null);
-		Container contentpane = getContentPane();
 		getContentPane().setLayout(null);
 
 		hotel = new Hotel();
@@ -113,25 +108,26 @@ public class VentanaLogin extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		boolean centinela = true;
 		if (e.getSource().equals(btnIngresar)) {
 			if (Usuario.getText().equals("Admin") && Contrasena.getText().equals("123")) {
 				lblIncorrecto.setText("");
-				setVisible(false);
-				VentanaCrear window = new VentanaCrear(hotel);
+				// setVisible(false);
+				VentanaCrearAdministrador window = new VentanaCrearAdministrador(hotel);
 				window.setVisible(true);
-
+				centinela = false;
 			}
 			if (hotel.comprobarEmpleado(Usuario.getText(), Contrasena.getText())) {
 				lblIncorrecto.setText("");
-				if(hotel.comprobarAdministrador(Usuario.getText())) {
+				if (hotel.comprobarAdministrador(Usuario.getText())) {
 					VentanaAdministrador window = new VentanaAdministrador();
 					window.setVisible(true);
-				}else {
+				} else {
 					VentanaRecepcionista window = new VentanaRecepcionista(Usuario.getText());
 					window.setVisible(true);
 				}
-				
-			} else {
+				centinela = false;
+			} else if (centinela) {
 				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
 			}
 

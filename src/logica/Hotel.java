@@ -18,7 +18,7 @@ public class Hotel {
 
 	public Hotel() {
 
-		archivo = new File("Usuarios.txt");
+		archivo = new File("src//Data//Usuarios.txt");
 		// misEmpleados= new ArrayList<Empleado>();
 		//
 		// Administrador a= new Administrador("david", "1097405579", "310834308",
