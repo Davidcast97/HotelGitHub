@@ -65,12 +65,12 @@ public class VentanaRegistroPersonal extends JFrame implements ActionListener{
 		lblRegistro.setBounds(10, 11, 414, 14);
 		contentPane.add(lblRegistro);
 		
-		JLabel lblCheckIn = new JLabel("Fecha de Ingreso");
-		lblCheckIn.setFont(new Font("Verdana", Font.PLAIN, 11));
-		lblCheckIn.setBounds(10, 36, 124, 20);
-		contentPane.add(lblCheckIn);
+		JLabel lblFechaSalida = new JLabel("Fecha de Salida");
+		lblFechaSalida.setFont(new Font("Verdana", Font.PLAIN, 11));
+		lblFechaSalida.setBounds(10, 36, 124, 20);
+		contentPane.add(lblFechaSalida);
 		
-		JLabel lblHoraDeIngreso = new JLabel("Hora de Ingreso");
+		JLabel lblHoraDeIngreso = new JLabel("Hora de Salida");
 		lblHoraDeIngreso.setFont(new Font("Verdana", Font.PLAIN, 11));
 		lblHoraDeIngreso.setBounds(223, 36, 111, 20);
 		contentPane.add(lblHoraDeIngreso);
@@ -120,9 +120,9 @@ public class VentanaRegistroPersonal extends JFrame implements ActionListener{
 		lblOcupacion.setBounds(223, 134, 93, 20);
 		contentPane.add(lblOcupacion);
 		
-		JDateChooser dateIngreso = new JDateChooser();
-		dateIngreso.setBounds(127, 36, 93, 20);
-		contentPane.add(dateIngreso);
+		JDateChooser dateSalida = new JDateChooser();
+		dateSalida.setBounds(127, 36, 93, 20);
+		contentPane.add(dateSalida);
 		
 		JDateChooser dateNacimiento = new JDateChooser();
 		dateNacimiento.setBounds(152, 155, 93, 20);
