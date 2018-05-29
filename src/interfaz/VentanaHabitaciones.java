@@ -85,7 +85,8 @@ public class VentanaHabitaciones extends JFrame implements ActionListener{
 		}
 		if(e.getSource() == btnContinuar) {
 			//verificar numero de camas.
-			
+			VentanaResumenRegistro ventana = new VentanaResumenRegistro();
+			ventana.setVisible(true);
 		}
 	}
 }
