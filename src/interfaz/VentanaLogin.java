@@ -125,10 +125,10 @@ public class VentanaLogin extends JFrame implements ActionListener {
 				lblIncorrecto.setText("");
 				if(hotel.comprobarAdministrador(Usuario.getText())) {
 					VentanaAdministrador window = new VentanaAdministrador();
-					JOptionPane.showMessageDialog(null, "ingreso");
 					window.setVisible(true);
 				}else {
-					
+					VentanaRecepcionista window = new VentanaRecepcionista(Usuario.getText());
+					window.setVisible(true);
 				}
 				
 			} else {
@@ -140,5 +140,13 @@ public class VentanaLogin extends JFrame implements ActionListener {
 			System.exit(0);
 
 		}
+	}
+
+	public JTextField getUsuario() {
+		return Usuario;
+	}
+
+	public void setUsuario(JTextField usuario) {
+		Usuario = usuario;
 	}
 }

@@ -102,7 +102,6 @@ public class Hotel {
 				
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		return false;
 	
@@ -127,5 +126,25 @@ public class Hotel {
 		return false;
 	}
 	
+	public String listarRecepcionistas() {
+		String lista = "";
+		String cadena = "";
+		try {
+			
+			FileReader fr= new FileReader(archivo);
+			
+			BufferedReader br= new BufferedReader(fr);
+			while ((cadena = br.readLine()) != null) {
+				
+				lista += cadena + "\n";
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+	}
 
 }

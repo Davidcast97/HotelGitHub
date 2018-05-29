@@ -10,11 +10,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import logica.Administrador;
 import logica.Hotel;
+import logica.Recepcionista;
 
 public class VentanaCrearRecepcionista extends JFrame implements ActionListener {
 
@@ -27,8 +30,9 @@ public class VentanaCrearRecepcionista extends JFrame implements ActionListener 
 	private Hotel hotel2;
 	private JButton btnGuargar;
 
-	public VentanaCrearRecepcionista(String login, String contrasena) {
+	public VentanaCrearRecepcionista() {
 		this.hotel2 = hotel2;
+		hotel2= new Hotel();
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 405);
 		setLocationRelativeTo(null);
@@ -110,8 +114,18 @@ public class VentanaCrearRecepcionista extends JFrame implements ActionListener 
 	
 	}
 
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource().equals(btnGuargar)) {
+			if ((hotel2.existe(txtLogin.getText()))) {
+				JOptionPane.showMessageDialog(null, "Usuario Existente");
+			} else {
+
+				Recepcionista miRecep = new Recepcionista(txtNombre.getText(), txtCedula.getText(),
+						txtTelefono.getText(), txtLogin.getText(), txtContrasena.getText());
+				hotel2.crearRecepcionistas(miRecep);
+				JOptionPane.showMessageDialog(null, "Recepcionista Creado");
+			}
+		}
 		
 	}
 }
