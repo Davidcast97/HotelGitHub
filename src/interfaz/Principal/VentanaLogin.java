@@ -103,7 +103,6 @@ public class VentanaLogin extends JFrame implements ActionListener {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(new File("").getAbsolutePath()+"\\src\\imagenes\\FondoSuave.jpg"));
-		System.out.println(	new File("").getAbsolutePath()+"\\src\\imagenes\\FondoSuave.jpg");
 
 		lblNewLabel.setBounds(0, 0, 490, 278);
 		getContentPane().add(lblNewLabel);

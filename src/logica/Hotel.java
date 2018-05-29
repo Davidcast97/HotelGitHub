@@ -146,7 +146,7 @@ public class Hotel {
 
 		return lista;
 	}
-	public String eliminarRecepcionista(String cedula) {
+	public String eliminarRecepcionista(String usuario) {
 		String mensaje = "";
 		String cadena = "";
 		try {
@@ -155,9 +155,9 @@ public class Hotel {
 
 			while ((cadena = br.readLine()) != null) {
 				String[] partes = cadena.split(";");
-				String parteCedula = partes[1];
-				if (parteCedula.equals(cedula)) {
-					System.out.println("SI");
+				String parteCedula = partes[3];
+				
+				if (parteCedula.equals(usuario)&&JOptionPane.showConfirmDialog(null, "Esta seguro")==0) {
 					mensaje += "";
 				} else {
 					mensaje += cadena + "\n";
