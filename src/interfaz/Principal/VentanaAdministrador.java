@@ -1,8 +1,6 @@
 package interfaz.Principal;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,21 +11,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import logica.Hotel;
 
 public class VentanaAdministrador extends JFrame implements ActionListener {
-
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Hotel hotel2;
 	private JButton btnBalance, btnModificarRecepcionista, btnListarRecepcionistas,
-			btnModificarTiendabtnCrearRecepcionista, btnCrearRecepcionista, btnModificarTienda;
+			btnModificarTienda, btnCrearRecepcionista;
 	private JTextArea textArea;
 
 	public VentanaAdministrador() {
-		this.hotel2 = hotel2;
 		hotel2 =new Hotel();
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 603, 405);
@@ -50,7 +46,8 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 		textArea.setBounds(149, 59, 386, 221);
 		textArea.setOpaque(false);
 		contentPane.add(textArea);
-
+		
+		
 		btnCrearRecepcionista = new JButton("Crear Recepcionista");
 		btnCrearRecepcionista.setBounds(10, 84, 129, 23);
 		btnCrearRecepcionista.addActionListener(this);
