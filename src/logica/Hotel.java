@@ -19,11 +19,6 @@ public class Hotel {
 	public Hotel() {
 
 		archivo = new File("src//Data//Usuarios.txt");
-		// misEmpleados= new ArrayList<Empleado>();
-		//
-		// Administrador a= new Administrador("david", "1097405579", "310834308",
-		// "dafa", "12");
-		// misEmpleados.add(a);
 	}
 
 	public void crearAdminitradores(Administrador miAdministrador) {
