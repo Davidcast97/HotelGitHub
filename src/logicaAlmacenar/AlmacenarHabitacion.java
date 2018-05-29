@@ -46,7 +46,7 @@ public class AlmacenarHabitacion {
 			}
 		return centinela;
 	}	
-	public Habitacion buscarCliente(String nombre) {
+	public Habitacion buscarHabitacion(String nombre) {
 		Habitacion miHabitacion = new Habitacion(null, null, false, 0, null);
 		String busqueda = "";
 		try {
@@ -75,7 +75,7 @@ public class AlmacenarHabitacion {
 		}
 		return miHabitacion;
 	}
-	public boolean editarCliente(Habitacion miHabitacion) {
+	public boolean editarHabitacion(Habitacion miHabitacion) {
 		boolean centinela = false;
 		String cadenaRegistro = "";
 		String cadena = "";
@@ -112,7 +112,7 @@ public class AlmacenarHabitacion {
 			}
 		return centinela;
 	}
-	public String listarTodosLosClientes() {
+	public String listarTodosLasHabitaciones() {
 		String entrada = "";
 		String salida = "";
 		try {
@@ -128,7 +128,7 @@ public class AlmacenarHabitacion {
 		}
 		return salida;
 	}
-	public boolean eliminarCliente(String nombre) {
+	public boolean eliminarHabitacion(String nombre) {
 		boolean centinela = false;
 		String cadenaRegistro = "";
 		String cadena = "";
