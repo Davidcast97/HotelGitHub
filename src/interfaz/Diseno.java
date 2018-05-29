@@ -14,14 +14,14 @@ import javax.swing.JLabel;
 
 public class Diseno {
 	public String TipoLetra,logo;
-	public int tamanoTitulos, tamanoMedio, tamanoPequeño;
+	public int tamanoTitulos, tamanoMedio, tamanoPequeno;
 	public Image image;
 	private JFrame frame;
 	public Diseno(JFrame f){
 		TipoLetra = "Arial";
 		tamanoTitulos=23;
 		tamanoMedio = 18;
-		tamanoPequeño = 14;
+		tamanoPequeno = 14;
 		logo = new File("").getAbsoluteFile()+"\\src\\imagenes\\logop.jpg";
 		frame = f;
         Image image = new ImageIcon(logo).getImage();
@@ -33,7 +33,6 @@ public class Diseno {
 	{
 		
         Image image = new ImageIcon(logo).getImage();
-        
         JLabel lblogo = new JLabel("");
 		lblogo.setIcon(new ImageIcon(logo));
 		lblogo.setBounds(425, 11, 50, 50);

@@ -88,7 +88,7 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		miTienda = new Tienda();
 
 		listProductos = new JList(miTienda.getListaNombresProductos());
-		listProductos.setFont(new Font(d.TipoLetra, Font.ITALIC, d.tamanoPequeño));
+		listProductos.setFont(new Font(d.TipoLetra, Font.ITALIC, d.tamanoPequeno));
 		listProductos.setBounds(10, 45, 245, 257);
 		listProductos.addListSelectionListener(this);
 		JScrollPane jsp = new JScrollPane(listProductos);
@@ -101,7 +101,7 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		frame.getContentPane().add(lblProductos);
 
 		btnComprar = new JButton("Comprar");
-		btnComprar.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		btnComprar.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		btnComprar.setBounds(314, 334, 103, 23);
 		btnComprar.addActionListener(this);
 		frame.getContentPane().add(btnComprar);
@@ -109,18 +109,18 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		estado = new JLabel("");
 		estado.setForeground(new Color(0, 0, 0));
 		estado.setHorizontalAlignment(SwingConstants.CENTER);
-		estado.setFont(new Font(d.TipoLetra, Font.ITALIC, d.tamanoPequeño));
+		estado.setFont(new Font(d.TipoLetra, Font.ITALIC, d.tamanoPequeno));
 		estado.setBounds(265, 440, 210, 20);
 		frame.getContentPane().add(estado);
 
 		btnFiar = new JButton("Fiar");
-		btnFiar.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		btnFiar.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		btnFiar.setBounds(314, 372, 103, 23);
 		btnFiar.addActionListener(this);
 		frame.getContentPane().add(btnFiar);
 
 		JLabel lblDetallesDeLa = new JLabel("Detalles de la venta");
-		lblDetallesDeLa.setFont(new Font(d.TipoLetra, Font.BOLD | Font.ITALIC, d.tamanoPequeño));
+		lblDetallesDeLa.setFont(new Font(d.TipoLetra, Font.BOLD | Font.ITALIC, d.tamanoPequeno));
 		lblDetallesDeLa.setBounds(10, 309, 159, 14);
 		frame.getContentPane().add(lblDetallesDeLa);
 
@@ -133,33 +133,33 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		JLabel lblPrecioUnidad = new JLabel("Precio unidad");
 		lblPrecioUnidad.setBounds(10, 52, 102, 15);
 		panel.add(lblPrecioUnidad);
-		lblPrecioUnidad.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		lblPrecioUnidad.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 
 		JLabel lblInventario = new JLabel("Inventario:");
 		lblInventario.setBounds(10, 11, 76, 15);
 		panel.add(lblInventario);
-		lblInventario.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		lblInventario.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 
 		inventario = new JLabel("");
-		inventario.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		inventario.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		inventario.setHorizontalAlignment(SwingConstants.RIGHT);
 		inventario.setBounds(144, 11, 35, 19);
 		panel.add(inventario);
 
 		precioUnitario = new JLabel("");
-		precioUnitario.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		precioUnitario.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		precioUnitario.setHorizontalAlignment(SwingConstants.RIGHT);
 		precioUnitario.setBounds(90, 52, 89, 14);
 		panel.add(precioUnitario);
 
 		precioTotal = new JLabel("");
-		precioTotal.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		precioTotal.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		precioTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 		precioTotal.setBounds(90, 125, 89, 14);
 		panel.add(precioTotal);
 
 		comboBoxHabitaciones = new JComboBox();
-		comboBoxHabitaciones.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		comboBoxHabitaciones.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		comboBoxHabitaciones.setBounds(127, 162, 52, 20);
 		panel.add(comboBoxHabitaciones);
 		comboBoxHabitaciones.addItem("100");
@@ -167,7 +167,7 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		comboBoxHabitaciones.addItem("202");
 
 		spinnerCantidad = new JSpinner();
-		spinnerCantidad.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		spinnerCantidad.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		spinnerCantidad.setBounds(133, 87, 46, 20);
 		panel.add(spinnerCantidad);
 		spinnerCantidad.setValue(1);
@@ -175,7 +175,7 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		spinnerCantidad.setModel(new SpinnerNumberModel(0, 0, 0, 1));
 
 		btnAVenta = new JButton("A\u00F1adir Venta");
-		btnAVenta.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		btnAVenta.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		btnAVenta.setBounds(41, 223, 112, 23);
 		btnAVenta.addActionListener(this);
 		panel.add(btnAVenta);
@@ -183,17 +183,17 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		JLabel lblCantidad = new JLabel("Cantidad:");
 		lblCantidad.setBounds(10, 89, 76, 14);
 		panel.add(lblCantidad);
-		lblCantidad.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		lblCantidad.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 
 		JLabel lblPrecioTotal = new JLabel("Precio total");
 		lblPrecioTotal.setBounds(10, 125, 76, 14);
 		panel.add(lblPrecioTotal);
-		lblPrecioTotal.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		lblPrecioTotal.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 
 		JLabel lblHabitacion = new JLabel("Habitacion");
 		lblHabitacion.setBounds(10, 164, 76, 14);
 		panel.add(lblHabitacion);
-		lblHabitacion.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		lblHabitacion.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		
 		
 		Object columnNames[] = { "Producto", "#", "Precio"};
@@ -207,7 +207,7 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		table.setEnabled(false);
 		table.setSurrendersFocusOnKeystroke(true);
 		table.setRowSelectionAllowed(false);
-		table.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
+		table.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
 		columnModel = table.getColumnModel();
 		columnModel.getColumn(0).setPreferredWidth(170);
 		columnModel.getColumn(1).setPreferredWidth(25);
@@ -222,8 +222,8 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		frame.getContentPane().add(tablePanel);
 		
 		btnLimpiar = new JButton("Limpiar");
-		btnLimpiar.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeño));
-		System.err.println(d.tamanoPequeño);
+		btnLimpiar.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
+		System.err.println(d.tamanoPequeno);
 		btnLimpiar.setBounds(314, 406, 103, 23);
 		btnLimpiar.addActionListener(this);
 		frame.getContentPane().add(btnLimpiar);
