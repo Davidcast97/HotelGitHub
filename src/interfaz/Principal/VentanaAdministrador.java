@@ -83,7 +83,12 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 			VentanaCrearRecepcionista VCR= new VentanaCrearRecepcionista();
 			VCR.setVisible(true);
 		}if(e.getSource().equals(btnModificarRecepcionista)) {
-			JOptionPane.showMessageDialog(null, "Para eliminar recepcionista Ingrese el Login:");
+			String login =JOptionPane.showInputDialog(null, "Para eliminar recepcionista Ingrese el Login:");
+			if(hotel2.existe(login)) {
+				hotel2.eliminarRecepcionista(login);
+			}else {
+				JOptionPane.showMessageDialog(null, "Recepcionista no exste");
+			}
 			
 		}
 

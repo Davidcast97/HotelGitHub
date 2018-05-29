@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
+import interfaz.Diseno;
 import logica.Hotel;;
 
 public class VentanaLogin extends JFrame implements ActionListener {
@@ -54,7 +55,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		setBounds(100, 100, 490, 278);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
-
+		Diseno d = new Diseno(this);
 		hotel = new Hotel();
 
 		JLabel TxtUsuario = new JLabel("Usuario :");
@@ -103,7 +104,6 @@ public class VentanaLogin extends JFrame implements ActionListener {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(new File("").getAbsolutePath()+"\\src\\imagenes\\FondoSuave.jpg"));
-		System.out.println(	new File("").getAbsolutePath()+"\\src\\imagenes\\FondoSuave.jpg");
 
 		lblNewLabel.setBounds(0, 0, 490, 278);
 		getContentPane().add(lblNewLabel);
@@ -134,7 +134,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 				Usuario.setText("");
 				Contrasena.setText("");
 			} else if (centinela) {
-				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
+				lblIncorrecto.setText("Usuario o Contraseï¿½a Incorrecta");
 			}
 
 		}

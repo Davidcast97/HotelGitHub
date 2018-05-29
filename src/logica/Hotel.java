@@ -19,11 +19,6 @@ public class Hotel {
 	public Hotel() {
 
 		archivo = new File("src//Data//Usuarios.txt");
-		// misEmpleados= new ArrayList<Empleado>();
-		//
-		// Administrador a= new Administrador("david", "1097405579", "310834308",
-		// "dafa", "12");
-		// misEmpleados.add(a);
 	}
 
 	public void crearAdminitradores(Administrador miAdministrador) {
@@ -146,5 +141,38 @@ public class Hotel {
 
 		return lista;
 	}
+	public String eliminarRecepcionista(String usuario) {
+		String mensaje = "";
+		String cadena = "";
+		try {
+			FileReader fr = new FileReader(archivo);
+			BufferedReader br = new BufferedReader(fr);
+
+			while ((cadena = br.readLine()) != null) {
+				String[] partes = cadena.split(";");
+				String parteCedula = partes[3];
+				
+				if (parteCedula.equals(usuario)&&JOptionPane.showConfirmDialog(null, "Esta seguro")==0) {
+					mensaje += "";
+				} else {
+					mensaje += cadena + "\n";
+				}
+
+			}
+			FileWriter fw = new FileWriter(archivo);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(mensaje);
+			bw.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+
+		return mensaje;
+
+	}
+
 
 }

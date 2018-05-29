@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import interfaz.Diseno;
 import interfaz.Reservas.VentanaRegistroPersonal;
 
 import javax.swing.JLabel;
@@ -23,22 +24,23 @@ public class VentanaRecepcionista extends JFrame implements ActionListener{
 	private JButton btnTienda;
 	private JButton btnReservas;
 	public VentanaRecepcionista(String usuario) {
+		Diseno d = new Diseno(this);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 634, 413);
+		setBounds(100, 100, 207, 230);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblVentanaRecepcionista = new JLabel("Ventana Recepcionista");
-		lblVentanaRecepcionista.setBounds(100, 11, 211, 14);
+		lblVentanaRecepcionista.setBounds(10, 11, 211, 14);
 		lblVentanaRecepcionista.setForeground(Color.BLACK);
-		lblVentanaRecepcionista.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 14));
+		lblVentanaRecepcionista.setFont(new Font(d.TipoLetra, Font.BOLD | Font.ITALIC, d.tamanoPequeno));
 
 		contentPane.add(lblVentanaRecepcionista);
 		
 		lblUsuario = new JLabel(""+usuario);
-		lblUsuario.setBounds(466, 12, 46, 14);
+		lblUsuario.setBounds(59, 36, 46, 14);
 		contentPane.add(lblUsuario);
 		
 		btnTienda = new JButton("Tienda");
