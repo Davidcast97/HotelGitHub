@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import interfaz.Tienda.VentanaTienda;
+
 import javax.swing.JButton;
 
 public class VEntrega {

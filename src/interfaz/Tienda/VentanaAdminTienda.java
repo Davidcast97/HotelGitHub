@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.Tienda;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -59,25 +59,25 @@ public class VentanaAdminTienda implements ActionListener {
 	
 	public VentanaAdminTienda() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 504, 361);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 596, 470);
+		
 		conTienda = new ConexionTienda();
 		productos =  conTienda.getMisProd();
 		selectedCol = 6;
 		selectedRow = 100;
-		
+		frame.setVisible(true);
 		btnAgregarProducto = new JButton("Agregar Producto");
-		btnAgregarProducto.setBounds(332, 44, 134, 23);
+		btnAgregarProducto.setBounds(421, 44, 149, 23);
 		btnAgregarProducto.addActionListener(this);
 		frame.getContentPane().add(btnAgregarProducto);
 		
 		btnEditar = new JButton("Editar");
-		btnEditar.setBounds(332, 78, 134, 23);
+		btnEditar.setBounds(421, 78, 149, 23);
 		btnEditar.addActionListener(this);
 		frame.getContentPane().add(btnEditar);
 		
 		btnEliminarProducto = new JButton("Eliminar Producto");
-		btnEliminarProducto.setBounds(332, 112, 134, 23);
+		btnEliminarProducto.setBounds(421, 112, 149, 23);
 		btnEliminarProducto.addActionListener(this);
 		frame.getContentPane().add(btnEliminarProducto);
 		
@@ -99,7 +99,7 @@ public class VentanaAdminTienda implements ActionListener {
 		frame.getContentPane().setLayout(null);
 		
 		tablePanel = new JPanel();
-		tablePanel.setBounds(10, 11, 312, 300);
+		tablePanel.setBounds(10, 11, 400, 400);
 		
 		
 		if (ALLOW_ROW_SELECTION) { // true by default
@@ -162,15 +162,13 @@ public class VentanaAdminTienda implements ActionListener {
  
         //Create the scroll pane and add the table to it.
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(0, 0, 312, 300);
+        scrollPane.setBounds(0, 0, 400, 400);
  
         //Add the scroll pane to this panel.
         tablePanel.add(scrollPane);
         tablePanel.add(table.getTableHeader(), BorderLayout.NORTH);
         frame.getContentPane().add(tablePanel);
-        
-		
-		
+        	
 	}
 	
 	public Object[][] obtenerDatosProductos() {
@@ -199,28 +197,15 @@ public class VentanaAdminTienda implements ActionListener {
 	            for (int j=0; j < numCols; j++) {
 	                System.out.print("  " + model.getValueAt(i, j));
 	            }
-	            System.out.println();
 	        }
-	        System.out.println("--------------------------");
 	    }
 
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==btnAgregarProducto) {
-			String[] prod = JOptionPane.showInputDialog("Ingrese el producto de la siguiente manera \n nombre,precio,cantidad,categoria").split(",");
-			boolean g = conTienda.guardarProducto(prod[0],prod[1], prod[2], prod[3]);
-			if (g) {
-				JOptionPane.showMessageDialog(null, "Guardo correctamente");
-				Producto p = new Producto(prod[0],Integer.parseInt(prod[1]), Integer.parseInt(prod[2]), Integer.parseInt(prod[3]),0);
-				productos.add(p);
-				Object columnNames[] = { "Id","Producto", "#", "Precio","Cat"};
-				Object rowData[][] = obtenerDatosProductos();
-				model = new DefaultTableModel(rowData, columnNames);
-				table.setModel(model);
-			}else {
-				JOptionPane.showMessageDialog(null, "No pudo guardar en la bd");
-			}
+			VentanaAgregarProducto vap= new VentanaAgregarProducto(this);
 		}
+		
 		if (e.getSource()==btnEditar) {
 			if (selectedCol!=6 && selectedRow!=100) {
 				boolean g=conTienda.editarProducto(model.getValueAt(selectedRow, 0),model.getValueAt(selectedRow, 1),model.getValueAt(selectedRow, 3),model.getValueAt(selectedRow, 2),model.getValueAt(selectedRow, 4));
@@ -244,6 +229,17 @@ public class VentanaAdminTienda implements ActionListener {
 					JOptionPane.showMessageDialog(null, "No pudo ser eliminado");
 				}
 			}
+		}
+	}
+	public void guardarProducto(String[] prod) {
+		boolean g = conTienda.guardarProducto(prod[1],prod[3], prod[2], prod[4]);
+		if (g) {
+			JOptionPane.showMessageDialog(null, "Guardo correctamente");
+			Producto p = new Producto(prod[1],Integer.parseInt(prod[3]), Integer.parseInt(prod[2]), Integer.parseInt(prod[4]),0);
+			productos.add(p);
+			model.addRow(prod); 
+		}else {
+			JOptionPane.showMessageDialog(null, "No pudo guardar en la bd");
 		}
 	}
 }

@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -102,7 +103,8 @@ public class VentanaLogin extends JFrame implements ActionListener {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(
-				"C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\madera1.jpg"));
+				new File("").getAbsolutePath()+ "\\src\\imagenes\\madera1.jpg"));
+		System.out.println(new File("").getAbsolutePath()+ "\\src\\imagenes\\madera1.jpg");
 		lblNewLabel.setBounds(0, 0, 490, 278);
 		getContentPane().add(lblNewLabel);
 	}
@@ -128,7 +130,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 				}
 				centinela = false;
 			} else if (centinela) {
-				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
+				lblIncorrecto.setText("Usuario o Contraseï¿½a Incorrecta");
 			}
 
 		}
