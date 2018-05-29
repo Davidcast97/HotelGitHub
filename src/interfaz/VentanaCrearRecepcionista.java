@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import logica.Hotel;
 
-public class VentanaAdministrador extends JFrame implements ActionListener {
+public class VentanaCrearRecepcionista extends JFrame implements ActionListener {
 
 
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 	private Hotel hotel2;
 	private JButton btnGuargar;
 
-	public VentanaAdministrador() {
+	public VentanaCrearRecepcionista(String login, String contrasena) {
 		this.hotel2 = hotel2;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 405);

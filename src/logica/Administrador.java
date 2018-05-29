@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Administrador extends Empleado {
-	private boolean Admin;
 	private ArrayList<Recepcionista> misRecepcionista = new ArrayList<Recepcionista>();
 	
-	public Administrador(String nombre, String cedula, String telefono, String login,String contrasena, boolean Admin) {
+	public Administrador(String nombre, String cedula, String telefono, String login,String contrasena) {
 		super(nombre, cedula, telefono, login, contrasena);
-		this.Admin= Admin;
+		
 	}
 	public void crearRecepcionista(String nombre, String cedula, String telefono, String contrasena, String login) {
 		
@@ -23,12 +22,7 @@ public class Administrador extends Empleado {
 			}
 		}
 		return false;
-	}
-	public boolean getAdmin() {
-		return Admin;
-	}
-	public void setAdmin(boolean admin) {
-		Admin = admin;
+	
 	}
 
 }

@@ -8,12 +8,12 @@ public class Empleado {
 	private String contrasena;
 	private String login;
 
-	public Empleado(String nombre, String cedula, String telefono, String contrasena, String login) {
+	public Empleado(String nombre, String cedula, String telefono, String login, String contrasena) {
 		this.nombre = nombre;
 		this.cedula = cedula;
 		this.telefono = telefono;
-		this.contrasena = contrasena;
 		this.login = login;
+		this.contrasena = contrasena;
 	}
 
 	public String getNombre() {

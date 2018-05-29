@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.JobAttributes;
+
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JButton;
@@ -31,6 +33,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 	private JLabel lblIncorrecto;
 	private JButton btnSalir;
 	private Hotel hotel;
+
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
@@ -52,14 +55,15 @@ public class VentanaLogin extends JFrame implements ActionListener {
 
 		setUndecorated(true);
 		setBounds(100, 100, 490, 278);
+		setLocationRelativeTo(null);
 		Container contentpane = getContentPane();
 		getContentPane().setLayout(null);
 
 		hotel = new Hotel();
-		
+
 		JLabel TxtUsuario = new JLabel("Usuario :");
 		TxtUsuario.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
-		TxtUsuario.setForeground(Color.WHITE);
+		TxtUsuario.setForeground(new Color(0, 0, 0));
 		TxtUsuario.setBounds(140, 35, 70, 56);
 		getContentPane().add(TxtUsuario);
 
@@ -71,7 +75,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		getContentPane().add(Usuario);
 
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a :");
-		lblContrasea.setForeground(Color.WHITE);
+		lblContrasea.setForeground(new Color(0, 0, 0));
 		lblContrasea.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
 		lblContrasea.setBounds(107, 80, 118, 56);
 		getContentPane().add(lblContrasea);
@@ -90,7 +94,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		getContentPane().add(btnIngresar);
 
 		lblIncorrecto = new JLabel();
-		lblIncorrecto.setForeground(Color.WHITE);
+		lblIncorrecto.setForeground(Color.RED);
 		lblIncorrecto.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
 		lblIncorrecto.setBounds(145, 117, 263, 56);
 		getContentPane().add(lblIncorrecto);
@@ -101,34 +105,36 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		btnSalir.addActionListener(this);
 		getContentPane().add(btnSalir);
 
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setForeground(Color.WHITE);
-		lblFondo.setIcon(new ImageIcon(new File(".").getAbsolutePath() + "\\src\\imagenes\\1.2.jpg"));// "C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\1.2.jpg"
-		lblFondo.setBounds(0, 0, 490, 278);
-		contentpane.add(lblFondo);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(
+				"C:\\Users\\deivi\\Documents\\workspace\\HotelGitHub\\HotelGitHub\\bin\\imagenes\\madera1.jpg"));
+		lblNewLabel.setBounds(0, 0, 490, 278);
+		getContentPane().add(lblNewLabel);
 	}
 
-	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(btnIngresar)) {
 			if (Usuario.getText().equals("Admin") && Contrasena.getText().equals("123")) {
-			//	setVisible(false);
+				lblIncorrecto.setText("");
+				setVisible(false);
 				VentanaCrear window = new VentanaCrear(hotel);
 				window.setVisible(true);
-				lblIncorrecto.setText("Entro");
-			}else {
+
+			}
+			if (hotel.comprobarEmpleado(Usuario.getText(), Contrasena.getText())) {
+				lblIncorrecto.setText("");
+				if(hotel.comprobarAdministrador(Usuario.getText())) {
+					VentanaAdministrador window = new VentanaAdministrador();
+					JOptionPane.showMessageDialog(null, "ingreso");
+					window.setVisible(true);
+				}else {
+					
+				}
+				
+			} else {
 				lblIncorrecto.setText("Usuario o Contraseña Incorrecta");
 			}
-			if(hotel.comprobarAdministrador(Usuario.getText(), Contrasena.getText()))   {
-				
-				VentanaAdministrador window= new VentanaAdministrador(Usuario.getText(), Contrasena.getText());
-				window.setVisible(true);
-			}
-			
-			//if(Administrador= ad.comprobarRecepcionista(Usuario.getText(), Contrasena.getText())) {
-				
-			//}
-			
+
 		}
 		if (e.getSource().equals(btnSalir)) {
 			System.exit(0);
