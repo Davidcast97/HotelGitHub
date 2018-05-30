@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import logica.Hotel;
+import logica.Turno;
 
 public class VentanaAdministrador extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
@@ -79,6 +80,8 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 		if (e.getSource().equals(btnListarRecepcionistas)) {
 			String lista = hotel2.listarRecepcionistas();
 			textArea.setText(lista);
+			
+			
 		}if(e.getSource().equals(btnCrearRecepcionista)) {
 			VentanaCrearRecepcionista VCR= new VentanaCrearRecepcionista();
 			VCR.setVisible(true);
@@ -87,7 +90,7 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 			if(hotel2.existe(login)) {
 				hotel2.eliminarRecepcionista(login);
 			}else {
-				JOptionPane.showMessageDialog(null, "Recepcionista no exste");
+				JOptionPane.showMessageDialog(null, "Recepcionista no existe");
 			}
 			
 		}

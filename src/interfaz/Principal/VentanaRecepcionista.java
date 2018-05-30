@@ -22,8 +22,10 @@ public class VentanaRecepcionista extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JLabel lblUsuario, lblVentanaRecepcionista ;
 	private JButton btnTienda;
-	private JButton btnReservas;
+	private JButton btnReservas, btnGastos;
+	private String usuario;
 	public VentanaRecepcionista(String usuario) {
+		usuario=this.usuario;
 		Diseno d = new Diseno(this);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 207, 230);
@@ -51,12 +53,26 @@ public class VentanaRecepcionista extends JFrame implements ActionListener{
 		btnReservas.addActionListener(this);
 		btnReservas.setBounds(41, 122, 89, 23);
 		contentPane.add(btnReservas);
+		
+		btnGastos = new JButton("Gastos");
+		btnGastos.addActionListener(this);
+		btnGastos.setBounds(41, 156, 89, 23);
+		contentPane.add(btnGastos);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnReservas) {
 			VentanaRegistroPersonal ventana = new VentanaRegistroPersonal(this);
 			ventana.setVisible(true);
+		}if(e.getSource()==btnGastos) {
+			VentanaGastosRecepcionista ventana= new VentanaGastosRecepcionista(this);
+			ventana.setVisible(true);
 		}
 	}
-
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	
 }

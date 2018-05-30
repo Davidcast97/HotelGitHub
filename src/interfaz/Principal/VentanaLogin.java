@@ -1,26 +1,24 @@
 package interfaz.Principal;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-
 import javax.swing.JTextField;
-import javax.swing.JButton;
 import javax.swing.UIManager;
 
 import interfaz.Diseno;
-import logica.Hotel;;
-
+import logica.Hotel;
 public class VentanaLogin extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -57,7 +55,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		getContentPane().setLayout(null);
 		Diseno d = new Diseno(this);
 		hotel = new Hotel();
-
+		
 		JLabel TxtUsuario = new JLabel("Usuario :");
 		TxtUsuario.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 15));
 		TxtUsuario.setForeground(new Color(0, 0, 0));
@@ -102,6 +100,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 		btnSalir.addActionListener(this);
 		getContentPane().add(btnSalir);
 
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(new File("").getAbsolutePath()+"\\src\\imagenes\\FondoSuave.jpg"));
 
