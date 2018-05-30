@@ -14,14 +14,20 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import logica.Reservas.RegistroPersonal;
+
 public class VentanaHabitaciones extends JFrame implements ActionListener{
 	
 	private JPanel contenedorSuperior, contenedorCentral, contenedorInferior;
 	private JLabel titulo;
 	private JButton matrizBotones[][], btnAtras, btnContinuar;
 	private int tamanio;
+	private VentanaRegistroPersonal ventana;
+	private RegistroPersonal miRegistro;
 	
-	public VentanaHabitaciones(){
+	public VentanaHabitaciones(VentanaRegistroPersonal ventana, RegistroPersonal miRegistro){
+		this.ventana = ventana;
+		this.miRegistro = miRegistro;
 		setBounds(100, 100, 450, 300);
 		panelSuperior();
 		panelCentral();

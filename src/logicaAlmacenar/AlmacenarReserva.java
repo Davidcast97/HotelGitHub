@@ -37,6 +37,29 @@ public class AlmacenarReserva {
 		}
 	}
 
+	public int numeroDeReservas() {
+		int contador = 0;
+		try {
+			if (new File(archivo).exists()) {
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivo));
+				Object aux = ois.readObject();
+				while (aux != null) {
+					if (aux instanceof Reserva) {
+						ois.close();
+						contador++;
+					}
+					aux = ois.readObject();
+				}
+				ois.close();
+			}
+
+		} catch (EOFException e1) {
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+		return contador;
+	}
+	
 	public boolean agregarReserva(Reserva miReserva) {
 		boolean centinela = false;
 		ArrayList<Reserva> reservas = new ArrayList<Reserva>();

@@ -10,6 +10,11 @@ import javax.swing.JLabel;
 import com.toedter.components.JSpinField;
 
 import interfaz.Principal.VentanaRecepcionista;
+import logica.Reservas.Acompanante;
+import logica.Reservas.RegistroPersonal;
+import logica.Reservas.Titular;
+import logicaAlmacenar.AlmacenarHabitacion;
+import logicaAlmacenar.AlmacenarReserva;
 
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JDateChooser;
@@ -19,6 +24,11 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.awt.event.ActionEvent;
 
 public class VentanaRegistroPersonal extends JFrame implements ActionListener{
@@ -35,6 +45,9 @@ public class VentanaRegistroPersonal extends JFrame implements ActionListener{
 	private JButton btnGuardar;
 	private JButton btnAgregar;
 	private JButton btnCancelar;
+	private JDateChooser dateSalida;
+	private JDateChooser dateNacimiento;
+	private ArrayList<Acompanante> misAcompanantes;
 	private VentanaRecepcionista miVentanaRecepcionista;
 	
 	public VentanaRegistroPersonal(VentanaRecepcionista miVentanaRecepcionista) {
@@ -106,11 +119,11 @@ public class VentanaRegistroPersonal extends JFrame implements ActionListener{
 		lblOcupacion.setBounds(223, 134, 93, 20);
 		contentPane.add(lblOcupacion);
 		
-		JDateChooser dateSalida = new JDateChooser();
+		dateSalida = new JDateChooser();
 		dateSalida.setBounds(127, 36, 93, 20);
 		contentPane.add(dateSalida);
 		
-		JDateChooser dateNacimiento = new JDateChooser();
+		dateNacimiento = new JDateChooser();
 		dateNacimiento.setBounds(152, 155, 93, 20);
 		contentPane.add(dateNacimiento);
 		
@@ -184,13 +197,40 @@ public class VentanaRegistroPersonal extends JFrame implements ActionListener{
 			this.setVisible(false);
 		}
 		if(e.getSource() == btnAgregar) {
+			this.misAcompanantes = new ArrayList<Acompanante>();
 			VentanaAgregarAcompanantes ventana = new VentanaAgregarAcompanantes(this);
 			ventana.setVisible(true);
 		}
 		if(e.getSource() == btnGuardar) {
-			//verificar;
-			VentanaHabitaciones ventana = new VentanaHabitaciones();
+			AlmacenarReserva miReserva = new AlmacenarReserva();
+			int id = miReserva.numeroDeReservas()+1;
+			GregorianCalendar checkIn = (GregorianCalendar) Calendar.getInstance();
+			GregorianCalendar checkOut = (GregorianCalendar) dateSalida.getCalendar();
+			String nombre = txtNombre.getText();
+			String identificacion = txtIdentificacion.getText();
+			GregorianCalendar fechaDeNacimiento = (GregorianCalendar) dateNacimiento.getCalendar();
+			String telefono = txtTelefono.getText();
+			int edad = checkIn.get(Calendar.YEAR) - fechaDeNacimiento.get(Calendar.YEAR);
+			boolean mayorDeEdad = false;
+			if(edad >= 18) {
+				mayorDeEdad = true;
+			}
+			String ciudadDeOrigen = txtCiudad.getText();
+			String nacionalidad = txtNacionalidad.getText();
+			String correoElectronico = txtCorreo.getText();
+			String ocupacion = txtOcupacion.getText();
+			Titular miPersonaTitular = new Titular(nombre, identificacion, fechaDeNacimiento, telefono, mayorDeEdad, ciudadDeOrigen, nacionalidad, correoElectronico, ocupacion);
+			for (int i = 0; i < misAcompanantes.size(); i++) {
+				Acompanante miAcompanante = misAcompanantes.get(i);
+				miAcompanante.setMiTitular(miPersonaTitular);
+				miPersonaTitular.agregarAcompanantes(miAcompanante);
+			}
+			RegistroPersonal miRegistro = new RegistroPersonal(id, checkIn, checkOut, miPersonaTitular, null);
+			VentanaHabitaciones ventana = new VentanaHabitaciones(this, miRegistro);
 			ventana.setVisible(true);
 		}
+	}
+	public void obtenerAcompanantes (Acompanante miAcompanante){
+		misAcompanantes.add(miAcompanante);
 	}
 }

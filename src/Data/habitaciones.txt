@@ -1,4 +1,4 @@
-101;15000;baja;true;2;dos camas sencillas, refrigerador pequeño, un baño privado,saf,asdf,sa,sfd,s,as,fds,as,fdsa,,,dsaf,fa,f,fds,f,fas,
+101;15000;baja;true;2;dos camas sencillas, refrigerador pequeño, un baño privado
 102;15000;baja;true;3;dos camas sencillas, una cama doble, refrigerador mediano, un baño privado
 103;15000;baja;true;1;una cama sencilla, refrigerador pequeño, un baño privado
 104;15000;baja;true;2;dos camas dobles, refrigerador pequeño, un baño privado

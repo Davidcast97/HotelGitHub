@@ -5,13 +5,13 @@ public class RegistroPersonal {
 	private int id;
 	private GregorianCalendar checkIn;
 	private GregorianCalendar checkOut;
-	private String miIdPersonaTitular;
+	private Titular miPersonaTitular;
 	private ArrayList<Habitacion> misHabitaciones;
-	public RegistroPersonal(int id, GregorianCalendar checkIn,GregorianCalendar checkOut, String miIdPersonaTitular,ArrayList<Habitacion> misHabitaciones) {
+	public RegistroPersonal(int id, GregorianCalendar checkIn,GregorianCalendar checkOut, Titular miPersonaTitular,ArrayList<Habitacion> misHabitaciones) {
 		this.id = id;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
-		this.miIdPersonaTitular = miIdPersonaTitular;
+		this.miPersonaTitular = miPersonaTitular;
 		this.misHabitaciones = misHabitaciones;
 	}
 	public GregorianCalendar getCheckIn() {
@@ -26,11 +26,11 @@ public class RegistroPersonal {
 	public void setCheckOut(GregorianCalendar checkOut) {
 		this.checkOut = checkOut;
 	}
-	public String getMiIdPersonaTitular() {
-		return miIdPersonaTitular;
+	public Titular getMiPersonaTitular() {
+		return miPersonaTitular;
 	}
-	public void setMiIdPersonaTitular(String miIdPersonaTitular) {
-		this.miIdPersonaTitular = miIdPersonaTitular;
+	public void setMiPersonaTitular(Titular miPersonaTitular) {
+		this.miPersonaTitular = miPersonaTitular;
 	}
 	public ArrayList<Habitacion> getMisHabitaciones() {
 		return misHabitaciones;
