@@ -10,9 +10,14 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
+
+import logica.Reservas.Acompanante;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.awt.event.ActionEvent;
 
 public class VentanaAgregarAcompanantes extends JFrame implements ActionListener{
@@ -23,6 +28,7 @@ public class VentanaAgregarAcompanantes extends JFrame implements ActionListener
 	private JTextField txtTelefono;
 	private JButton btnCancelar;
 	private JButton btnAgregar;
+	private JDateChooser dateNacimiento;
 	private VentanaRegistroPersonal ventana;
 
 	public VentanaAgregarAcompanantes(VentanaRegistroPersonal ventana) {
@@ -59,7 +65,7 @@ public class VentanaAgregarAcompanantes extends JFrame implements ActionListener
 		lblAgregar.setBounds(10, 11, 414, 14);
 		contentPane.add(lblAgregar);
 		
-		JDateChooser dateNacimiento = new JDateChooser();
+		dateNacimiento = new JDateChooser();
 		dateNacimiento.setBounds(233, 126, 103, 20);
 		contentPane.add(dateNacimiento);
 		
@@ -99,7 +105,18 @@ public class VentanaAgregarAcompanantes extends JFrame implements ActionListener
 			this.setVisible(false);
 		}
 		if(e.getSource() == btnAgregar) {
-			
+			String nombre = txtNombre.getText();
+			String identificacion = txtIdentificacion.getText();
+			GregorianCalendar fechaDeNacimiento = (GregorianCalendar) dateNacimiento.getCalendar();
+			GregorianCalendar fechaActual = (GregorianCalendar) Calendar.getInstance();
+			String telefono = txtTelefono.getText();
+			int edad = fechaActual.get(Calendar.YEAR) - fechaDeNacimiento.get(Calendar.YEAR);
+			boolean mayorDeEdad = false;
+			if(edad >= 18) {
+				mayorDeEdad = true;
+			}
+			Acompanante miAcompanante = new Acompanante(nombre, identificacion, fechaDeNacimiento, telefono, mayorDeEdad, null);
+			ventana.obtenerAcompanantes(miAcompanante);
 		}
 	}
 }

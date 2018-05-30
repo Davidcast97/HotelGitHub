@@ -38,6 +38,13 @@ public class Titular extends Persona {
 		}
 		return centinela;
 	}
+	public ArrayList<Acompanante> getMisAcompanantes() {
+		return misAcompanantes;
+	}
+
+	public void setMisAcompanantes(ArrayList<Acompanante> misAcompanantes) {
+		this.misAcompanantes = misAcompanantes;
+	}
 
 	public String getCiudadDeOrigen() {
 		return ciudadDeOrigen;
