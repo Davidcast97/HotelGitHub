@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import logica.Hotel;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -29,7 +30,7 @@ public class VentanaGastosRecepcionista extends JFrame implements ActionListener
 	public VentanaGastosRecepcionista(VentanaRecepcionista mi) {
 
 		mi = this.mi;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,8 +76,17 @@ public class VentanaGastosRecepcionista extends JFrame implements ActionListener
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnGenerar) {
-			//String usuario= mi.getUsuario();
-			//mihotel.generarGasto(usuario, txtDescripcion.getText(), Long.parseLong(txtValor.getText()));
+			System.out.println(mihotel.comprobarBase());
+			
+			if(mihotel.comprobarBase()>=Long.parseLong(txtValor.getText())) {
+				mihotel.generarGasto(txtDescripcion.getText(), Long.parseLong(txtValor.getText()));
+				JOptionPane.showMessageDialog(null, "Gasto almacenado");
+				setVisible(false);
+			}else {
+				JOptionPane.showMessageDialog(null, "El gasto excede la base");
+			}
+			
+			
 		}
 	}
 }

@@ -1,7 +1,9 @@
 package logica;
 
+import java.awt.JobAttributes;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,16 +17,55 @@ import javax.swing.JTextField;
 public class Hotel {
 	private ArrayList<Empleado> misEmpleados;
 	private File archivo, gastoRecepcionista;
+	private long base;
 
 	public Hotel() {
 
 		archivo = new File("src//Data//Usuarios.txt");
 		gastoRecepcionista = new File("src//Data//GastoRecepcionista.txt");
+		base= comprobarBase();
 	}
 
-	public void generarGasto(String usuario, String descripcion, Long b) {
-		
+	public long comprobarBase() {
+		String cadena = "";
+		try {
+			FileReader fr = new FileReader(gastoRecepcionista);
+			BufferedReader br = new BufferedReader(fr);
+			String parteBase = "" ;
+			while ((cadena = br.readLine()) != null) {
+				String[] partes = cadena.split(";");
+				parteBase = partes[2];
+				
+			}
+			return Long.parseLong(parteBase);
+		} catch (EOFException e) {
+		} catch (Exception e) {
+		} 
+		return 168000;
+
 	}
+
+
+	public void generarGasto(String descripcion, Long b) {
+		base=base-b;
+		String cadena = descripcion + ";" + b+ ";"+ base ;
+		try {
+			FileWriter fw = new FileWriter(gastoRecepcionista, true); // booleano sirve para saber si se agrega false= borra todo y
+															// coloca el ultimo string
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(cadena);
+			bw.newLine(); // agrega otra linea para el proximo dato a guardar
+			bw.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
 	public String eliminarRecepcionista(String usuario) {
 		String mensaje = "";
 		String cadena = "";
@@ -177,6 +218,14 @@ public class Hotel {
 		}
 
 		return lista;
+	}
+
+	public long getBase() {
+		return base;
+	}
+
+	public void setBase(long base) {
+		this.base = base;
 	}
 
 	
