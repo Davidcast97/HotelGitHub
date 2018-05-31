@@ -13,14 +13,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
+import interfaz.Tienda.VentanaAdminTienda;
 import logica.Hotel;
-import logica.Turno;
+import logica.Reservas.Habitacion;
+import logicaAlmacenar.AlmacenarHabitacion;
 
 public class VentanaAdministrador extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Hotel hotel2;
-	private JButton btnBalance, btnModificarRecepcionista, btnListarRecepcionistas,
+	private JButton btnModHab, btnBalance, btnModificarRecepcionista, btnListarRecepcionistas,
 			btnModificarTienda, btnCrearRecepcionista;
 	private JTextArea textArea;
 
@@ -70,18 +72,30 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 		contentPane.add(btnModificarRecepcionista);
 
 		btnBalance = new JButton("Balance");
-		btnBalance.setBounds(10, 217, 89, 23);
+		btnBalance.setBounds(10, 217, 129, 23);
 		btnBalance.addActionListener(this);
 		contentPane.add(btnBalance);
+		
+		btnModHab = new JButton("Modificar Habitacion");
+		btnModHab.setBounds(10, 257, 129, 23);
+		btnModHab.addActionListener(this);
+		contentPane.add(btnModHab);
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (btnModHab ==e.getSource()) {
+			AlmacenarHabitacion ah = new AlmacenarHabitacion();
+			Habitacion a = ah.buscarHabitacion(JOptionPane.showInputDialog( "Ingrese la habitacion a buscar: "));
+			JOptionPane.showMessageDialog(null, "El estado de la habitacion es: "+ a.getEstado()+" y tiene las siguientes caracteristicas: " + a.getDetalles());
+			
+		}
+		if (e.getSource()==btnModificarTienda) {
+			VentanaAdminTienda vat = new VentanaAdminTienda();
+		}
 		if (e.getSource().equals(btnListarRecepcionistas)) {
 			String lista = hotel2.listarRecepcionistas();
 			textArea.setText(lista);
-			
-			
 		}if(e.getSource().equals(btnCrearRecepcionista)) {
 			VentanaCrearRecepcionista VCR= new VentanaCrearRecepcionista();
 			VCR.setVisible(true);
@@ -90,7 +104,7 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 			if(hotel2.existe(login)) {
 				hotel2.eliminarRecepcionista(login);
 			}else {
-				JOptionPane.showMessageDialog(null, "Recepcionista no existe");
+				JOptionPane.showMessageDialog(null, "Recepcionista no exste");
 			}
 			
 		}

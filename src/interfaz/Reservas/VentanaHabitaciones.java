@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.MissingFormatArgumentException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import logica.Reservas.Acompanante;
+import logica.Reservas.Habitacion;
 import logica.Reservas.RegistroPersonal;
 
 public class VentanaHabitaciones extends JFrame implements ActionListener{
@@ -81,6 +84,7 @@ public class VentanaHabitaciones extends JFrame implements ActionListener{
 		for (int i = 0; i < matrizBotones.length; i++) {
 			for (int j = 0; j < matrizBotones[0].length; j++) {
 				if(e.getSource() == matrizBotones[i][j]) {
+					this.misHabitaciones = new ArrayList<Habitacion>();
 					VentanaPropiedadesHabitacion ventana = new VentanaPropiedadesHabitacion(this, matrizBotones[i][j].getText());
 					ventana.setVisible(true);
 				}
@@ -91,8 +95,14 @@ public class VentanaHabitaciones extends JFrame implements ActionListener{
 		}
 		if(e.getSource() == btnContinuar) {
 			//verificar numero de camas.
-			VentanaResumenRegistro ventana = new VentanaResumenRegistro();
+			
+			miRegistro.setMisHabitaciones(misHabitaciones);
+			VentanaResumenRegistro ventana = new VentanaResumenRegistro(this,miRegistro);
 			ventana.setVisible(true);
 		}
+	}
+	private ArrayList<Habitacion> misHabitaciones;
+	public void obtenerHabitaciones (Habitacion miHabitacion){
+		misHabitaciones.add(miHabitacion);
 	}
 }

@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import interfaz.Diseno;
 import interfaz.Reservas.VentanaRegistroPersonal;
+import interfaz.Tienda.VentanaTienda;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -22,10 +23,8 @@ public class VentanaRecepcionista extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JLabel lblUsuario, lblVentanaRecepcionista ;
 	private JButton btnTienda;
-	private JButton btnReservas, btnGastos;
-	private String usuario;
+	private JButton btnReservas;
 	public VentanaRecepcionista(String usuario) {
-		usuario=this.usuario;
 		Diseno d = new Diseno(this);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 207, 230);
@@ -47,32 +46,24 @@ public class VentanaRecepcionista extends JFrame implements ActionListener{
 		
 		btnTienda = new JButton("Tienda");
 		btnTienda.setBounds(41, 89, 89, 23);
+		btnTienda.addActionListener(this);
 		contentPane.add(btnTienda);
 		
 		btnReservas = new JButton("Reservas");
 		btnReservas.addActionListener(this);
 		btnReservas.setBounds(41, 122, 89, 23);
-		contentPane.add(btnReservas);
 		
-		btnGastos = new JButton("Gastos");
-		btnGastos.addActionListener(this);
-		btnGastos.setBounds(41, 156, 89, 23);
-		contentPane.add(btnGastos);
+		contentPane.add(btnReservas);
 	}
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnReservas) {
 			VentanaRegistroPersonal ventana = new VentanaRegistroPersonal(this);
 			ventana.setVisible(true);
-		}if(e.getSource()==btnGastos) {
-			VentanaGastosRecepcionista ventana= new VentanaGastosRecepcionista(this);
-			ventana.setVisible(true);
+		}
+		if (e.getSource() == btnTienda) {
+			VentanaTienda vTienda = new VentanaTienda();
+			
 		}
 	}
-	public String getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-	
+
 }

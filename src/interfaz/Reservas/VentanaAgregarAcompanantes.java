@@ -117,6 +117,7 @@ public class VentanaAgregarAcompanantes extends JFrame implements ActionListener
 			}
 			Acompanante miAcompanante = new Acompanante(nombre, identificacion, fechaDeNacimiento, telefono, mayorDeEdad, null);
 			ventana.obtenerAcompanantes(miAcompanante);
+			this.setVisible(false);
 		}
 	}
 }

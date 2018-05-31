@@ -30,9 +30,9 @@ import java.awt.event.ActionEvent;
 
 import logica.Administrador;
 import logica.Empleado;
+import logica.Reservas.Habitacion;
 import logica.LogTienda.Producto;
 import logica.LogTienda.Tienda;
-import logica.Reservas.Habitacion;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
@@ -63,25 +63,27 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 	
 
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+//
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					VentanaTienda window = new VentanaTienda();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaTienda window = new VentanaTienda();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public VentanaTienda() throws Exception {
+	public VentanaTienda() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 491, 506);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 		
 		Diseno d = new Diseno(frame);
        
@@ -223,7 +225,6 @@ public class VentanaTienda implements  ActionListener, ListSelectionListener, Ch
 		
 		btnLimpiar = new JButton("Limpiar");
 		btnLimpiar.setFont(new Font(d.TipoLetra, Font.PLAIN, d.tamanoPequeno));
-		System.err.println(d.tamanoPequeno);
 		btnLimpiar.setBounds(314, 406, 103, 23);
 		btnLimpiar.addActionListener(this);
 		frame.getContentPane().add(btnLimpiar);

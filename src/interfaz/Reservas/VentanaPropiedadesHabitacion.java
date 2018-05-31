@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import logica.Reservas.Acompanante;
 import logica.Reservas.Habitacion;
 import logicaAlmacenar.AlmacenarHabitacion;
 
@@ -27,6 +28,7 @@ public class VentanaPropiedadesHabitacion extends JFrame implements ActionListen
 	private JButton btnAgregar;
 	private VentanaHabitaciones ventana;
 	private AlmacenarHabitacion habitaciones;
+	private Habitacion miHabitacion;
 	private String nombre;
 
 	public VentanaPropiedadesHabitacion(VentanaHabitaciones ventana, String nombre) { 
@@ -39,29 +41,29 @@ public class VentanaPropiedadesHabitacion extends JFrame implements ActionListen
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Habitacion mihabitacion = habitaciones.buscarHabitacion(nombre);
+		miHabitacion = habitaciones.buscarHabitacion(nombre);
 		
-		JLabel lblHabitacion = new JLabel("Habitaci\u00F3n: "+ mihabitacion.getNombre());
+		JLabel lblHabitacion = new JLabel("Habitaci\u00F3n: "+ miHabitacion.getNombre());
 		lblHabitacion.setFont(new Font("Verdana", Font.PLAIN, 14));
 		lblHabitacion.setBounds(10, 11, 233, 20);
 		contentPane.add(lblHabitacion);
 		
-		JLabel lblTemporada = new JLabel("Temporada:"+mihabitacion.getTarifa().getTemporada());
+		JLabel lblTemporada = new JLabel("Temporada:"+miHabitacion.getTarifa().getTemporada());
 		lblTemporada.setFont(new Font("Verdana", Font.PLAIN, 14));
 		lblTemporada.setBounds(10, 31, 233, 20);
 		contentPane.add(lblTemporada);
 		
-		JLabel lblTarifa = new JLabel("Tarifa:"+mihabitacion.getTarifa().getValor());
+		JLabel lblTarifa = new JLabel("Tarifa:"+miHabitacion.getTarifa().getValor());
 		lblTarifa.setFont(new Font("Verdana", Font.PLAIN, 14));
 		lblTarifa.setBounds(10, 51, 233, 20);
 		contentPane.add(lblTarifa);
 		
-		JLabel lblEstado = new JLabel("Estado:"+mihabitacion.getEstado());
+		JLabel lblEstado = new JLabel("Estado:"+miHabitacion.getEstado());
 		lblEstado.setFont(new Font("Verdana", Font.PLAIN, 14));
 		lblEstado.setBounds(10, 71, 233, 20);
 		contentPane.add(lblEstado);
 		
-		JLabel lblCamas = new JLabel("Camas:"+mihabitacion.getNumeroCamas());
+		JLabel lblCamas = new JLabel("Camas:"+miHabitacion.getNumeroCamas());
 		lblCamas.setFont(new Font("Verdana", Font.PLAIN, 14));
 		lblCamas.setBounds(10, 91, 233, 20);
 		contentPane.add(lblCamas);
@@ -71,7 +73,7 @@ public class VentanaPropiedadesHabitacion extends JFrame implements ActionListen
 		lblDetalles.setBounds(10, 111, 233, 20);
 		contentPane.add(lblDetalles);
 		
-		String[] arreglo = mihabitacion.getDetalles().split(",");
+		String[] arreglo = miHabitacion.getDetalles().split(",");
 		String mostrar = "";
 		for (int i = 0; i < arreglo.length; i++) {
 			mostrar += arreglo[i]+"\n";
@@ -108,6 +110,7 @@ public class VentanaPropiedadesHabitacion extends JFrame implements ActionListen
 			int i = (numero/100)-1;
 			int j = (numero%100)-1;
 			ventana.pintarCasilla(i, j);
+			ventana.obtenerHabitaciones(miHabitacion);
 		}
 	}
 }

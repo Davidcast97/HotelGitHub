@@ -6,7 +6,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logica.Reservas.RegistroPersonal;
+import logica.Reservas.Reserva;
+import logicaAlmacenar.AlmacenarReserva;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -17,20 +23,17 @@ import javax.swing.SwingConstants;
 public class VentanaResumenRegistro extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JTextField txtNombreTitular;
-	private JTextField txtIdentificacion;
-	private JTextField txtNumeroDeacompaantes;
-	private JTextField txtHabitaciones;
-	private JTextField txtFacturar;
-	private JTextField txtDeposito;
 	private JButton btnAceptar;
 	private JButton btnAgregarDeposito;
 	private JButton btnCancelarRegistro;
 	private JButton btnModificar;
 	private JButton btnDescuentos;
+	private VentanaHabitaciones ventana;
+	private RegistroPersonal miRegistro;
 
-	public VentanaResumenRegistro() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public VentanaResumenRegistro(VentanaHabitaciones ventana,RegistroPersonal miRegistro) {
+		this.ventana = ventana;
+		this.miRegistro = miRegistro;
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -43,73 +46,50 @@ public class VentanaResumenRegistro extends JFrame implements ActionListener{
 		lblDetallesDeHospedaje.setBounds(10, 11, 414, 20);
 		contentPane.add(lblDetallesDeHospedaje);
 		
-		JLabel lblNombreTitular = new JLabel("Nombre titular:");
+		JLabel lblNombreTitular = new JLabel("Nombre titular:"+miRegistro.getMiPersonaTitular().getNombre());
 		lblNombreTitular.setFont(new Font("Verdana", Font.PLAIN, 11));
-		lblNombreTitular.setBounds(10, 52, 96, 20);
+		lblNombreTitular.setBounds(10, 52, 414, 20);
 		contentPane.add(lblNombreTitular);
 		
-		JLabel lblCc = new JLabel("Identificaci\u00F3n:");
+		JLabel lblCc = new JLabel("Identificaci\u00F3n:"+miRegistro.getMiPersonaTitular().getIdentificacion());
 		lblCc.setFont(new Font("Verdana", Font.PLAIN, 11));
-		lblCc.setBounds(10, 83, 85, 20);
+		lblCc.setBounds(10, 83, 184, 20);
 		contentPane.add(lblCc);
 		
-		JLabel lblNumeroDeAcompaantes = new JLabel("N\u00FAmero de acompa\u00F1antes:");
+		int contador = 0;
+		for (int i = 0; i < miRegistro.getMiPersonaTitular().getMisAcompanantes().size(); i++) {
+			contador ++;
+		}
+		
+		JLabel lblNumeroDeAcompaantes = new JLabel("N\u00FAmero de acompa\u00F1antes:"+contador);
 		lblNumeroDeAcompaantes.setFont(new Font("Verdana", Font.PLAIN, 11));
 		lblNumeroDeAcompaantes.setBounds(204, 83, 166, 20);
 		contentPane.add(lblNumeroDeAcompaantes);
 		
-		JLabel lblHabitaciones = new JLabel("Habitaciones:");
+		String Habitaciones = "";
+		double valor = 0;
+		for (int i = 0; i < miRegistro.getMisHabitaciones().size(); i++) {
+			Habitaciones += miRegistro.getMisHabitaciones().get(i).getNombre() + ",";
+			valor += miRegistro.getMisHabitaciones().get(i).getTarifa().getValor();
+		}
+		Habitaciones = Habitaciones.substring(0, Habitaciones.length()-1);
+		JLabel lblHabitaciones = new JLabel("Habitaciones:"+ Habitaciones);
 		lblHabitaciones.setFont(new Font("Verdana", Font.PLAIN, 11));
-		lblHabitaciones.setBounds(10, 114, 85, 20);
+		lblHabitaciones.setBounds(10, 114, 271, 20);
 		contentPane.add(lblHabitaciones);
 		
-		JLabel lblFacturar = new JLabel("Facturar:");
+		JLabel lblFacturar = new JLabel("Facturar:"+valor);
 		lblFacturar.setFont(new Font("Verdana", Font.PLAIN, 11));
-		lblFacturar.setBounds(10, 145, 59, 20);
+		lblFacturar.setBounds(10, 145, 184, 20);
 		contentPane.add(lblFacturar);
 		
 		JLabel lblDeposito = new JLabel("Deposito:");
 		lblDeposito.setFont(new Font("Verdana", Font.PLAIN, 11));
-		lblDeposito.setBounds(222, 145, 59, 20);
+		lblDeposito.setBounds(222, 145, 159, 20);
 		contentPane.add(lblDeposito);
-
-		txtNombreTitular = new JTextField();
-		txtNombreTitular.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtNombreTitular.setBounds(106, 53, 318, 20);
-		contentPane.add(txtNombreTitular);
-		txtNombreTitular.setColumns(10);
-		
-		txtIdentificacion = new JTextField();
-		txtIdentificacion.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtIdentificacion.setBounds(98, 83, 96, 20);
-		contentPane.add(txtIdentificacion);
-		txtIdentificacion.setColumns(10);
-		
-		txtNumeroDeacompaantes = new JTextField();
-		txtNumeroDeacompaantes.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtNumeroDeacompaantes.setBounds(365, 84, 59, 20);
-		contentPane.add(txtNumeroDeacompaantes);
-		txtNumeroDeacompaantes.setColumns(10);
-		
-		txtHabitaciones = new JTextField();
-		txtHabitaciones.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtHabitaciones.setBounds(89, 114, 335, 20);
-		contentPane.add(txtHabitaciones);
-		txtHabitaciones.setColumns(10);
-		
-		txtFacturar = new JTextField();
-		txtFacturar.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtFacturar.setBounds(67, 145, 145, 20);
-		contentPane.add(txtFacturar);
-		txtFacturar.setColumns(10);
-		
-		txtDeposito = new JTextField();
-		txtDeposito.setFont(new Font("Verdana", Font.PLAIN, 11));
-		txtDeposito.setBounds(279, 145, 145, 20);
-		contentPane.add(txtDeposito);
-		txtDeposito.setColumns(10);
 		
 		btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(this);
 		btnAceptar.setFont(new Font("Verdana", Font.PLAIN, 11));
 		btnAceptar.addActionListener(this);
 		btnAceptar.setBounds(317, 227, 107, 23);
@@ -140,6 +120,7 @@ public class VentanaResumenRegistro extends JFrame implements ActionListener{
 		contentPane.add(btnDescuentos);
 	}
 	public void actionPerformed(ActionEvent arg0) {
-		
+		JOptionPane.showMessageDialog(null, "agregado");
+		this.setVisible(false);
 	}
 }
