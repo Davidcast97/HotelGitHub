@@ -29,7 +29,7 @@ public class VentanaLogin extends JFrame implements ActionListener {
 	private JLabel lblIncorrecto;
 	private JButton btnSalir;
 	private Hotel hotel;
-
+//hola mundo
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
